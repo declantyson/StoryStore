@@ -8,7 +8,7 @@
 </head>
 <body>
 
-The only question that remains... will you yield in time?
+<%= yield %>
 
 </body>
 </html>

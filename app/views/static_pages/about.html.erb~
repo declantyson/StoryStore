@@ -1,4 +1,4 @@
-<% provide(:title, 'aboot') %>
+<% provide (:title, 'aboot') %>
 
 <h1>What are you doing here?</h1>
 <ul>
