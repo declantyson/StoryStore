@@ -1,4 +1,0 @@
-<% provide (:title, 'help') %>
-
-<h1>Problem?</h1>
-<p>Tough</p>

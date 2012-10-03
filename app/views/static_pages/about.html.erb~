@@ -1,7 +1,0 @@
-<% provide (:title, 'aboot') %>
-
-<h1>What are you doing here?</h1>
-<ul>
-  <li>These aren't the droids you're looking for</li>
-  <li>Move along</li>
-</ul>
