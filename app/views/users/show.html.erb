@@ -1,15 +1,19 @@
+<% provide(:title, @user.name) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
   <%= @user.name %>
 </p>
-
 <p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
-
+<p>
+  <b>Projects:</b>
+  <%= @user.get_projects() %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
