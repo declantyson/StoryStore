@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @inspiration.title %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @inspiration.image %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @inspiration.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_inspiration_path(@inspiration) %> |
+<%= link_to 'Back', inspirations_path %>

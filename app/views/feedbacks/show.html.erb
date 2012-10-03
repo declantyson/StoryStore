@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Headline:</b>
+  <%= @feedback.headline %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @feedback.rating %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @feedback.user_id %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @feedback.project_id %>
+</p>
+
+<p>
+  <b>Scene:</b>
+  <%= @feedback.scene_id %>
+</p>
+
+<p>
+  <b>Character:</b>
+  <%= @feedback.character_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @feedback.location_id %>
+</p>
+
+<p>
+  <b>Music:</b>
+  <%= @feedback.music_id %>
+</p>
+
+<p>
+  <b>Inspiration:</b>
+  <%= @feedback.inspiration_id %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @feedback.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>

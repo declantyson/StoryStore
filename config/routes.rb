@@ -1,4 +1,18 @@
 GreatBritishDangerzone::Application.routes.draw do
+  resources :feedbacks
+
+  resources :inspirations
+
+  resources :musics
+
+  resources :locations
+
+  resources :l_ocations
+
+  resources :characters
+
+  resources :scenes
+
   resources :projects
 
   get "static_pages/contact"

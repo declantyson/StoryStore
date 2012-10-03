@@ -1,0 +1,3 @@
+class Feedback < ActiveRecord::Base
+  attr_accessible :character_id, :comments, :headline, :inspiration_id, :location_id, :music_id, :project_id, :rating, :scene_id, :user_id
+end

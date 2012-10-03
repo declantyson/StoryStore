@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @scene.title %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @scene.project_id %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @scene.image %>
+</p>
+
+<p>
+  <b>Entry:</b>
+  <%= @scene.entry %>
+</p>
+
+<p>
+  <b>Themes:</b>
+  <%= @scene.themes %>
+</p>
+
+
+<%= link_to 'Edit', edit_scene_path(@scene) %> |
+<%= link_to 'Back', scenes_path %>

@@ -1,0 +1,3 @@
+class Location < ActiveRecord::Base
+  attr_accessible :description, :image, :name, :project_id
+end

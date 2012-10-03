@@ -1,0 +1,29 @@
+<%= form_for(@l_ocation) do |f| %>
+  <% if @l_ocation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@l_ocation.errors.count, "error") %> prohibited this l_ocation from being saved:</h2>
+
+      <ul>
+      <% @l_ocation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br />
+    <%= f.number_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

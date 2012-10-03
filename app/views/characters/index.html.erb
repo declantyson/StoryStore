@@ -1,0 +1,31 @@
+<h1>Listing characters</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Project</th>
+    <th>Image</th>
+    <th>Personality</th>
+    <th>Quotes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @characters.each do |character| %>
+  <tr>
+    <td><%= character.name %></td>
+    <td><%= character.project_id %></td>
+    <td><%= character.image %></td>
+    <td><%= character.personality %></td>
+    <td><%= character.quotes %></td>
+    <td><%= link_to 'Show', character %></td>
+    <td><%= link_to 'Edit', edit_character_path(character) %></td>
+    <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Character', new_character_path %>

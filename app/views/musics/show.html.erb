@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @music.title %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @music.project_id %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @music.artist %>
+</p>
+
+<p>
+  <b>Spotify uri:</b>
+  <%= @music.spotify_uri %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>

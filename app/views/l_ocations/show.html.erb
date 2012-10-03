@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @l_ocation.name %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @l_ocation.project_id %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @l_ocation.image %>
+</p>
+
+
+<%= link_to 'Edit', edit_l_ocation_path(@l_ocation) %> |
+<%= link_to 'Back', l_ocations_path %>
