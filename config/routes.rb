@@ -1,4 +1,6 @@
 GreatBritishDangerzone::Application.routes.draw do
+  resources :projects
+
   get "static_pages/contact"
   get "static_pages/home"
   get "static_pages/about"
