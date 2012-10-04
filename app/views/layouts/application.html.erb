@@ -3,12 +3,16 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= render 'layouts/fonts' %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <div class="content">
+    <%= yield %>
+  </div>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
