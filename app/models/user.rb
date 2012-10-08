@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     a = []
     self.projects.each_index do |i|
       # a << content_tag(:p, self.projects[i].title)
-      a << "#{self.projects[i].title}<br/>"
+      a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'><div class='title'><p>#{self.projects[i].title}</p></div></div></a>"
     end
     a.join.html_safe
   end

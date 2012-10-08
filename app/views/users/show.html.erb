@@ -2,18 +2,26 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-<p>
-  <b>Projects:</b>
+<div id="project-details">
+  <div id="project-image"></div>
+  <br/>
+  <div class="details">
+    <div class="left">
+      <p><b>Name</b></p>
+      <p><%= @user.name %>
+    </div>
+    <div class="right">
+      <p><b>Email</b></p>
+      <p><%= @user.email %></p>
+    </div>
+  </div>
+</div>
+<div class="box-group project-boxes">
+  <h3>Projects</h3>
   <%= @user.get_projects() %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="clearfix"></div>
+
+<!-- <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %> -->
