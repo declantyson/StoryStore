@@ -2,11 +2,13 @@
 $rubyRed:#9b1031;
 $mainGrey:#f8f9f9;
 $darkerGrey:#e8e9e9;
+$curly: 'Satisfy', sans-serif;
+$serif: 'Arbutus Slab', serif;
 
 body {
    background: $mainGrey;
    margin:0;
-   font-family: 'Arbutus Slab', serif;
+   font-family: $serif;
 }
 
 header {
@@ -34,7 +36,7 @@ h2 {
    padding: 7px;
    margin:0;
    color:$rubyRed;
-   font-family:'Courgette', sans-serif;
+   font-family:$curly;
    
    a {
 	color:inherit;
@@ -44,6 +46,23 @@ h2 {
 	   color:inherit;
 	}
    }
+}
+
+a {
+	color: $rubyRed;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: $rubyRed;
+}
+
+a:active {
+	color: #f00;
+}
+
+header a, a.btn {
+	text-decoration: none;
 }
 
 .hero-unit {
@@ -90,7 +109,39 @@ h3 {
 }
 
 footer {
-   min-height:100px;
+  min-height:100px;
+	max-width: 1080px;
+	margin: 0 auto;
+}
+
+footer .footer-logo {
+	float: left;
+	padding-top:5px;
+	width: 100%;
+	min-width: 200px;
+	border-bottom: dashed 1px $darkerGrey;
+}
+
+footer .end {
+	width: 100%;
+	border-top: dashed 1px $darkerGrey;
+}
+
+footer img {
+	padding-top:5px;
+}
+
+footer .col-narrow {
+	float:left;
+	width:138px;
+	border-right: dashed 1px $darkerGrey;
+	min-height:100px;
+	padding: 10px;
+}
+
+footer ul {
+	list-style-type: none;
+	margin: 0 8px;
 }
 
 #project-details {
@@ -181,7 +232,7 @@ footer {
 }
 
 #error_explanation h2{
-	font-family: "Arbutus Slab", sans-serif;
+	font-family: $serif;
 	font-weight: normal !important;
 	background-color: #EEE !important;
 	color: $rubyRed !important;
@@ -246,7 +297,6 @@ footer {
 	h1#register {
 		float:left;
 	}
-
 	header .project-title {
 	   display: none;
 	}
