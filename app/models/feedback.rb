@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: feedbacks
+#
+#  id             :integer          not null, primary key
+#  headline       :string(255)
+#  rating         :integer
+#  user_id        :integer
+#  project_id     :integer
+#  scene_id       :integer
+#  character_id   :integer
+#  location_id    :integer
+#  music_id       :integer
+#  inspiration_id :integer
+#  comments       :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Feedback < ActiveRecord::Base
   attr_accessible :character_id, :comments, :headline, :inspiration_id, :location_id, :music_id, :project_id, :rating, :scene_id, :user_id
   belongs_to :user
