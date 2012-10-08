@@ -11,7 +11,8 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :avatar
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   has_secure_password
 	before_save { |user| user.email = email.downcase }
 	validates :name, presence: true, length: {minimum: 4, maximum: 25}
@@ -32,4 +33,12 @@ class User < ActiveRecord::Base
     a.join.html_safe
   end
 
+  def get_avatar()
+    if self.avatar.url == "/avatars/original/missing.png"
+      avatar_html = '<div class="blank"></div>'
+    else 
+      avatar_html = "<img src='#{self.avatar.url}' alt='#{self.name}'/>"
+    end
+    avatar_html.html_safe
+  end
 end

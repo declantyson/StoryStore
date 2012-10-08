@@ -1,9 +1,9 @@
 <% provide(:title, @user.name) %>
 
-<p id="notice"><%= notice %></p>
+
 
 <div id="project-details">
-  <div id="project-image"></div>
+  <div id="project-image"><%= @user.get_avatar() %></div>
   <br/>
   <div class="details">
     <div class="left">
@@ -15,7 +15,11 @@
       <p><%= @user.email %></p>
     </div>
   </div>
+  <div class="clearfix"></div>
 </div>
+
+<p id="notice"><%= notice %></p>
+<span><%= print @user.avatar.url %></span>
 <div class="box-group project-boxes">
   <h3>Projects</h3>
   <%= @user.get_projects() %>
