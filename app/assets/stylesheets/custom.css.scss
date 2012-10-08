@@ -170,12 +170,13 @@ footer {
 
 .form {
 	padding-top:10px;
+	width: 48%;
 }
 
 #error_explanation {
-	clear: left;
-	width: auto !important;
-	max-width: 250px;
+	clear: both;
+	float: right;
+	max-width: 408px;
 	margin-top: 20px;
 }
 
@@ -188,26 +189,41 @@ footer {
 	padding-top: 10px !important;
 }
 
+.field {
+	width: 100%;
+}
+
 .field_with_errors {
 	background-color: transparent !important;
 	color: $rubyRed;
+	padding: 0 !important;
+	width: 100%;
 }
 
 .field_with_errors input {
 	border: solid 2px #f00;
 }
 
-@media screen and (max-width: 960px) {
+.field input {
+	width: 100%;
+}
+
+@media screen and (max-width: 1080px) {
+	.form {
+		width:37%;
+	}
+}
+
+@media screen and (max-width: 930px) {
 	.hero-unit h1 {
 	   font-size:32px;
 	}
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 880px) {
 	h1#register {
 	   font-size:28px;
 	   clear:both;
-	   float:right;
 	}
 	.ad-image {
 	   float:none;
@@ -215,7 +231,11 @@ footer {
 	}
 	#error_explanation {
 		clear: both;
-		float: right;
+		margin: 0 auto !important;
+		float:none;
+	}
+	.form {
+		width: 100%;
 	}
 }
 
@@ -226,10 +246,7 @@ footer {
 	h1#register {
 		float:left;
 	}
-	#error_explanation {
-		clear: both;
-		float: left;
-	}
+
 	header .project-title {
 	   display: none;
 	}
@@ -260,6 +277,12 @@ footer {
 	}
 	.show-synopsis {
 	   display: inline;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	#error_explanation{
+		width: 97.5% !important;
 	}
 }
 
