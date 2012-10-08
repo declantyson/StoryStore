@@ -49,7 +49,7 @@ h2 {
 .hero-unit {
    max-width:940px;
    margin: 0 auto;
-   min-width:280px;
+   min-width:160px;
 }
 
 h3 {
@@ -164,7 +164,72 @@ footer {
    padding-left:20px;
 }
 
+.ad-image {
+   float:right;
+}
+
+.form {
+	padding-top:10px;
+}
+
+#error_explanation {
+	clear: left;
+	width: auto !important;
+	max-width: 250px;
+	margin-top: 20px;
+}
+
+#error_explanation h2{
+	font-family: "Arbutus Slab", sans-serif;
+	font-weight: normal !important;
+	background-color: #EEE !important;
+	color: $rubyRed !important;
+	line-height: 14px;
+	padding-top: 10px !important;
+}
+
+.field_with_errors {
+	background-color: transparent !important;
+	color: $rubyRed;
+}
+
+.field_with_errors input {
+	border: solid 2px #f00;
+}
+
+@media screen and (max-width: 960px) {
+	.hero-unit h1 {
+	   font-size:32px;
+	}
+}
+
+@media screen and (max-width: 840px) {
+	h1#register {
+	   font-size:28px;
+	   clear:both;
+	   float:right;
+	}
+	.ad-image {
+	   float:none;
+	   width:100%;
+	}
+	#error_explanation {
+		clear: both;
+		float: right;
+	}
+}
+
 @media screen and (max-width: 740px) {
+	.form{
+		clear:both;
+	}
+	h1#register {
+		float:left;
+	}
+	#error_explanation {
+		clear: both;
+		float: left;
+	}
 	header .project-title {
 	   display: none;
 	}
@@ -209,11 +274,20 @@ footer {
 		}
 	   }
 	}
-
 }
 @media screen and (max-width: 320px) {
 	#project-details {
-		padding: 0 0 10px 0;
-		width:320px;
+	   padding: 0 0 10px 0;
+	   width:320px;
+	}
+	.hero-unit h1 {
+	   font-size:20px;
+	}
+	.hero-unit {
+	   padding:30px;
+	}
+	.hero-unit h2 {
+	   font-size:18px;
+	   line-height:20px;
 	}
 }

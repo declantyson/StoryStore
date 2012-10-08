@@ -1,7 +1,9 @@
 <% provide(:title, 'Register') %>
+<div class="hero-unit">
+  <%= image_tag("woman-writing-laptop.jpg", alt: "Share your stories with StoryStore", class: "ad-image")%>
+  <h1 id="register">Register for StoryStore</h1>
 
-<h1>Register for StoryStore</h1>
+  <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', root_path %>
+  <!-- <%= link_to 'Back', root_path %> -->
+</div>
