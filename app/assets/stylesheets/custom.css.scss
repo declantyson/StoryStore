@@ -75,8 +75,8 @@ header {
 }
  
 h1 {
-   padding: 15px 0;
-	 font-family: $serif;
+  padding: 15px 0;
+  font-family: $serif;
 }
 
 h2 {
@@ -200,6 +200,16 @@ footer ul {
    padding-left:30px;
 }
 
+#project-details .btn {
+  width:66%;
+  text-align:left;
+  margin-bottom:5px;
+}
+
+#project-details .btn i {
+  float:right;
+}
+
 #project-image .blank {
    width:320px;
    height:320px;
@@ -315,7 +325,11 @@ footer ul {
 }
 
 .field input {
-	width: 100%;
+  width: 100%;
+}
+
+input.btn {
+  font-family: $serif;
 }
 
 @media screen and (max-width: 1080px) {

@@ -1,0 +1,44 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+	<% @user.errors.delete(:password_digest) %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> occurred when trying to create your account:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div class="field" style="float:right;width:50%;">	
+	  <%= f.label :avatar %>
+	  <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended width of 320px</p>
+	  <%= f.file_field :avatar %>
+	</div>
+	<div class="field" style="float:right;width:50%;clear:both;">
+	  <label>Current Avatar</label>
+	  <%= @user.get_avatar() %>
+	</div>
+	<div class="form">
+		<div class="field">
+		  <%= f.label :name %>
+		  <%= f.text_field :name, disabled: "disabled" %>
+		</div>
+		<div class="field">
+		  <%= f.label :email %>
+		  <%= f.text_field :email %>
+		</div>
+		<div class="field">
+		  <%= f.label :password %>
+		  <%= f.password_field :password %>
+		</div>
+		<div class="field">
+		  <%= f.label :password_confirmation %>
+		  <%= f.password_field :password_confirmation %>
+		</div>
+		<div class="actions">
+		  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+		</div>
+	</div>
+<% end %>

@@ -1,8 +1,16 @@
-<% provide(:title, 'Edit user') %>
+<div class="hero-unit">
+	<% if signed_in? && current_user.id == @user.id %>
+		<% provide(:title, 'Edit user') %>
 
-<h1>Editing user</h1>
+		<h1>Edit your account</h1>
 
-<%= render 'form' %>
+		<%= render 'form_edit' %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+		<%= link_to 'Show', @user %> |
+		<%= link_to 'Back', users_path %>
+	<% else %>
+
+	  <h1>Trying to edit someone else's account?</h1>
+	  <h2>You heartless bastard.</h2>
+	<% end %>
+</div>
