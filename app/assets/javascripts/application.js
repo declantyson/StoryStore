@@ -16,5 +16,5 @@
 
 $(document).ready(function(){
 	console.log('firing');
-	setTimeout(function(){ $('.alert').css({ opacity: 0 }); }, 5000);
+	setTimeout(function(){ $('.alert').css({ opacity: 0 }); }, 2500);
 });

@@ -13,6 +13,7 @@
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  remember_token      :string(255)
 #
 
 require 'test_helper'

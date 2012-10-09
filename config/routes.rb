@@ -20,8 +20,11 @@ GreatBritishDangerzone::Application.routes.draw do
   match '/help', to: 'static_pages#help'
   match '/register', to: 'users#new'
   match '/thumbnails/original/missing.png', to: redirect('/system/projects/thumbnails/original/missing.png')
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -36,6 +36,13 @@ p#notice{
     color: #006600;
 }
 
+.alert-error {
+    color: white;
+    background-color: $rubyRed;
+    text-shadow: #000000;
+    border: solid 1px #dd0000;
+}
+
 .debug_dump {
   clear: both;
   float: left;
