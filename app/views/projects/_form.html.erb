@@ -20,6 +20,11 @@
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
+    <%= f.label :thumbnail %>
+    <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended size: 165x165px</p>
+    <%= f.file_field :thumbnail %>
+  </div>
+  <div class="field">
     <%= f.label :synopsis %><br />
     <%= f.text_field :synopsis %>
   </div>

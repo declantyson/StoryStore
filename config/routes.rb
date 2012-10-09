@@ -19,6 +19,7 @@ GreatBritishDangerzone::Application.routes.draw do
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'
   match '/register', to: 'users#new'
+  match '/thumbnails/original/missing.png', to: redirect('/system/projects/thumbnails/original/missing.png')
 
   resources :users
 

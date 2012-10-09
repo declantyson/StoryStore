@@ -2,12 +2,17 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  email           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string(255)
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  email               :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  password_digest     :string(255)
+#  avatar              :string(255)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class User < ActiveRecord::Base
@@ -28,7 +33,8 @@ class User < ActiveRecord::Base
     a = []
     self.projects.each_index do |i|
       # a << content_tag(:p, self.projects[i].title)
-      a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'><div class='title'><p>#{self.projects[i].title}</p></div></div></a>"
+      img = "<img src='#{self.projects[i].thumbnail.url}' alt='#{self.projects[i].title}'/>"
+      a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'>#{img}<div class='title'><p>#{self.projects[i].title}</p></div></div></a>"
     end
     a.join.html_safe
   end
