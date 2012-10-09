@@ -13,3 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	console.log('firing');
+	setTimeout(function(){ $('.alert').css({ opacity: 0 }); }, 5000);
+});

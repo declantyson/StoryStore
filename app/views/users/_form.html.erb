@@ -1,6 +1,6 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-		<% @user.errors.delete(:password_digest) %>
+	<% @user.errors.delete(:password_digest) %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> occurred when trying to create your account:</h2>
 
@@ -33,7 +33,7 @@
 		  <%= f.password_field :password_confirmation %>
 		</div>
 		<div class="actions">
-		  <%= f.submit %>
+		  <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 		</div>
 	</div>
 <% end %>
