@@ -68,8 +68,13 @@ $(document).ready(function(){
 		if($(this).attr('checked') == 'checked') {
 			console.log($(this).attr('checked'));
 			$('#user_password, #user_password_confirmation').attr('disabled', false);
+			$('#password-area').slideDown(200);
 		} else {
 			$('#user_password, #user_password_confirmation').attr('disabled', true);
+			$('#password-area').slideUp(200);
 		}
+	});
+	$('#delete-btn').on('click', function(){
+		$('#confirm-delete').fadeIn(200);
 	});
 });
