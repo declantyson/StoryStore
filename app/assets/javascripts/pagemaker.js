@@ -64,7 +64,12 @@ $(document).ready(function(){
 			$(this).find('.title').fadeOut();
 		}
 	});
+	$('#user_change_password').on('change', function(){
+		if($(this).attr('checked') == 'checked') {
+			console.log($(this).attr('checked'));
+			$('#user_password, #user_password_confirmation').attr('disabled', false);
+		} else {
+			$('#user_password, #user_password_confirmation').attr('disabled', true);
+		}
+	});
 });
-
-
-

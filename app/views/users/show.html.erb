@@ -17,7 +17,7 @@
     <% if signed_in? && current_user.id == @user.id %>
     <center>
       <%= link_to 'Add new project <i class="icon-plus icon-white"></i>'.html_safe, '/projects/new', class: "btn btn-large btn-primary" %>
-      <%= link_to 'Edit account <i class="icon-wrench"></i>'.html_safe, "/users/#{current_user.id}/edit", class: "btn btn-large btn-secondary" %>
+      <%= link_to 'Edit account <i class="icon-wrench"></i>'.html_safe, edit_user_path(current_user), class: "btn btn-large btn-secondary" %>
       <%= link_to 'Sign out <i class="icon-off"></i>'.html_safe, signout_path, method: "delete", class: "btn btn-large btn-secondary" %>
     </center>
     <% end %>

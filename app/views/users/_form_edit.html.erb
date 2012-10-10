@@ -11,14 +11,14 @@
       </ul>
     </div>
   <% end %>
-	<div class="field" style="float:right;width:50%;">	
+	<div class="field" style="float:right;width:320px;clear:both">	
 	  <%= f.label :avatar %>
-	  <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended width of 320px</p>
+	  <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Minimum width of 320px</p>
 	  <%= f.file_field :avatar %>
 	</div>
-	<div class="field" style="float:right;width:50%;clear:both;">
+	<div class="field" style="float:right;width:320px;clear:both;">
 	  <label>Current Avatar</label>
-	  <%= @user.get_avatar() %>
+	  <%= @user.get_avatar_thumb() %>
 	</div>
 	<div class="form">
 		<div class="field">
@@ -30,12 +30,16 @@
 		  <%= f.text_field :email %>
 		</div>
 		<div class="field">
+		  <%= f.label :change_password, style: "float:left;padding-right:20px;" %>
+		  <%= f.check_box :change_password, value: false, style: "width:10px" %>
+		</div>
+		<div class="field">
 		  <%= f.label :password %>
-		  <%= f.password_field :password %>
+		  <%= f.password_field :password, disabled: "disabled" %>
 		</div>
 		<div class="field">
 		  <%= f.label :password_confirmation %>
-		  <%= f.password_field :password_confirmation %>
+		  <%= f.password_field :password_confirmation, disabled: "disabled" %>
 		</div>
 		<div class="actions">
 		  <%= f.submit "Update", class: "btn btn-large btn-primary" %>

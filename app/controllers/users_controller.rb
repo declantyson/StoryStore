@@ -52,9 +52,13 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if params[:user][:change_password] == false
+        @user.attributes = params[:user].except(:password, :password_confirmation, :change_password)
+      else
+	@user.attributes = params[:user].except(:change_password)
+      end
+      if @user.save(validate: false)
 	sign_in @user
         format.html { redirect_to @user, notice: 'Your account was successfully updated.' }
         format.json { head :no_content }

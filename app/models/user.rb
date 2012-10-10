@@ -17,8 +17,9 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :avatar
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  attr_accessible :email, :name, :password, :password_confirmation, :avatar, :change_password
+  has_attached_file :avatar, styles: { medium: "320x1000>", thumb: "165x165>" }
+  before_save validate :validate_avatar
   has_secure_password
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -27,6 +28,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
   has_many :projects
   has_many :feedbacks
 
@@ -34,7 +36,6 @@ class User < ActiveRecord::Base
   def get_projects()
     a = []
     self.projects.each_index do |i|
-      # a << content_tag(:p, self.projects[i].title)
       img = "<img src='#{self.projects[i].thumbnail.url}' alt='#{self.projects[i].title}'/>"
       a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'>#{img}<div class='title'><p>#{self.projects[i].title}</p></div></div></a>"
     end
@@ -45,9 +46,27 @@ class User < ActiveRecord::Base
     if self.avatar.url == "/avatars/original/missing.png"
       avatar_html = '<div class="blank"></div>'
     else 
-      avatar_html = "<img src='#{self.avatar.url}' alt='#{self.name}'/>"
+      avatar_html = "<img src='#{self.avatar.url(:medium)}'/>"
     end
     avatar_html.html_safe
+  end
+
+  def get_avatar_thumb()
+    if self.avatar.url == "/avatars/original/missing.png"
+      avatar_html = '<div class="blank"></div>'
+    else 
+      avatar_html = "<img src='#{self.avatar.url(:thumb)}'/>"
+    end
+    avatar_html.html_safe
+  end
+  
+  # make sure that avatar uploaded is at least 320 px
+  def validate_avatar
+     if self.avatar.queued_for_write[:original]
+      # self.errors.add(:change_pass)
+      dimensions = Paperclip::Geometry.from_file(self.avatar.queued_for_write[:original])
+      self.errors.add(:avatar, "should at least 320px") if dimensions.width < 320
+     end
   end
 
   private

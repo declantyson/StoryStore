@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009140011) do
+ActiveRecord::Schema.define(:version => 20121010121413) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20121009140011) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "remember_token"
+    t.boolean  "change_password"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
