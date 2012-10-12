@@ -10,9 +10,12 @@
 		    </ul>
 		  </div>
 		<% end %>
+	<div class="pro-avatar">
+		<img src='<%= @project.thumbnail.url %>' alt=''/>
+	</div>
 	<div class="form">
 		<div class="field">
-		  <%= f.label :title %><br />
+		  <%= f.label :title %>
 		  <%= f.text_field :title %>
 		</div>
 		  <%= f.hidden_field :user_id, value: current_user.id %>
@@ -22,19 +25,19 @@
 		  <%= f.file_field :thumbnail %>
 		</div>
 		<div class="field">
-		  <%= f.label :synopsis %><br />
-		  <%= f.text_field :synopsis %>
+		  <%= f.label :synopsis %>
+		  <%= f.text_area :synopsis %>
 		</div>
 		<div class="field">
-		  <%= f.label :genres %><br />
-		  <%= f.text_field :genres %>
+		  <%= f.label :genres %>
+		  <%= get_genre_dropdown() %>
 		</div>
 		<div class="field">
-		  <%= f.label :format %><br />
+		  <%= f.label :format %>
 		  <%= f.text_field :format %>
 		</div>
 		<div class="actions">
-		  <%= f.submit %>
+		  <%= f.submit class: "btn large-btn btn-primary" %>
 		</div>
 	</div>
 <% end %>

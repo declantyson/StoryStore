@@ -27,5 +27,15 @@ class Project < ActiveRecord::Base
   has_many :feedbacks
 
   validates :title, presence: true, length: {minimum: 4, maximum: 255}
+  validates :genres, presence: true
+  validates :format, presence: true
+  before_save validate :validate_proj_thumbnail
   has_attached_file :thumbnail, styles: { medium: "300x300>", thumb: "100x100>" }
+
+  def validate_proj_thumbnail
+     if self.thumbnail.queued_for_write[:original]
+      dimensions = Paperclip::Geometry.from_file(self.thumbnail.queued_for_write[:original])
+      self.errors.add(:thumbnail, "should be at least 165px wide") if dimensions.width < 165
+     end
+  end
 end

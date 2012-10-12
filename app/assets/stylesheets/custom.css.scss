@@ -330,8 +330,14 @@ footer ul {
 	border: solid 2px #f00;
 }
 
-.field input {
+.field input, .field textarea, .field select {
   width: 100%;
+}
+
+.field textarea {
+  height: 75px;
+  min-height: 75px;
+  resize:vertical;
 }
 
 input.btn {
@@ -344,6 +350,11 @@ input.btn {
 
 .acc-avatar {
   float:right;
+}
+
+.pro-avatar {
+  float:right;
+  width:30%;
 }
 
 #confirm-delete {
@@ -379,10 +390,13 @@ input.btn {
 	.form {
 		width: 100%;
 	}
-	.acc-avatar {
+	.acc-avatar, .pro-avatar {
 		float: none;
 		margin: 0 auto;
 		max-width: 320px;
+	}
+	.pro-avatar{
+		width:165px;
 	}
 }
 

@@ -1,8 +1,12 @@
-<% provide(:title, 'Edit Project') %>
+<% if signed_in? %>
+	<% provide(:title, 'Edit Project') %>
 
-<h1>Editing project</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+	<div class="hero-unit">
+	<h1>Edit project</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>
