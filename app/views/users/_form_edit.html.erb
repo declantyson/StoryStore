@@ -11,23 +11,10 @@
       </ul>
     </div>
   <% end %>
-	<div class="field" style="float:right;width:320px;clear:both">	
-	  <%= f.label :avatar %>
-	  <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended width at least 320px</p>
-	  <%= f.file_field :avatar %>
+	<div class="acc-avatar">
+	  <%= @user.get_avatar() %>
 	</div>
-	<div class="field" style="float:right;width:320px;clear:both;">
-		<div class="actions" style="float:right;clear:both;padding-top:20px;width:150px;text-align:center">
-		  <%= link_to "Delete my account", "#", class: "btn btn-warning", id: "delete-btn" %>
-		  <div id="confirm-delete" style="display:none;">
-		    <p style="font-size:12px;line-height:14px;padding: 5px 0">Are you sure? There will be no way for you to get your projects back!</p>
-		    <%= link_to "I'm sure, goodbye... :(", current_user, method:"delete", class: "btn btn-danger" %>
-		  </div>
-		</div>
-	  <label>Current Avatar</label>
-	  <%= @user.get_avatar_thumb() %>
-	</div>
-	<div class="form">
+	<div class="form acc-form">
 		<div class="field">
 		  <%= f.label :name %>
 		  <%= f.text_field :name, disabled: "disabled" %>
@@ -50,9 +37,21 @@
 			  <%= f.password_field :password_confirmation, disabled: "disabled" %>
 			</div>
 		</div>
-		<div class="actions">
-		  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
-		</div>
+	</div>
+	<div class="field">	
+	  <%= f.label :avatar %>
+	  <p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended width at least 320px</p>
+	  <%= f.file_field :avatar %>
+	</div>
+	<div class="field" style="float:right;">
+	  <%= link_to "Delete my account", "#", class: "btn btn-warning", id: "delete-btn" %>
+	  <div id="confirm-delete">
+	    <p style="font-size:12px;line-height:14px;padding: 5px 0">Are you sure? There will be no way for you to get your projects back!</p>
+	    <%= link_to "I'm sure, goodbye... :(", current_user, method:"delete", class: "btn btn-danger" %>
+	  </div>
+	</div>
+	<div class="actions">
+	  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
 	</div>
 	<div class="clearfix"></div>
 <% end %>

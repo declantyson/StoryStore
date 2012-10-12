@@ -4,16 +4,8 @@
 
 <div id="project-details">
   <div id="project-image"><%= @user.get_avatar() %></div>
-  <br/>
   <div class="details">
-    <div class="left">
-      <p><b>Name</b></p>
-      <p><%= @user.name %>
-    </div>
-    <div class="right">
-      <p><b>Email</b></p>
-      <p><%= @user.email %></p>
-    </div>
+      <h2 style="text-align:center"><%= @user.name %></h2>
     <% if signed_in? && current_user.id == @user.id %>
     <center>
       <%= link_to 'Add new project <i class="icon-plus icon-white"></i>'.html_safe, '/projects/new', class: "btn btn-large btn-primary" %>

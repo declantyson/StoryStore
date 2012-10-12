@@ -210,6 +210,11 @@ footer ul {
   float:right;
 }
 
+#project-image {
+   width:320px;
+   margin: 0 auto;
+}
+
 #project-image .blank {
    width:320px;
    height:320px;
@@ -223,13 +228,13 @@ footer ul {
    margin:10px;
    background: $mainGrey;
    float:left;
-
+   position:relative;
+   overflow:hidden;
 }
 
 .box img {
-  max-height:165px;
   max-width: 165px;
-  position: absolute;
+  position:absolute;
 }
 
 
@@ -333,6 +338,18 @@ input.btn {
   font-family: $serif;
 }
 
+.acc-form {
+  float:left;
+}
+
+.acc-avatar {
+  float:right;
+}
+
+#confirm-delete {
+  display:none;
+}
+
 @media screen and (max-width: 1080px) {
 	.form {
 		width:37%;
@@ -361,6 +378,11 @@ input.btn {
 	}
 	.form {
 		width: 100%;
+	}
+	.acc-avatar {
+		float: none;
+		margin: 0 auto;
+		max-width: 320px;
 	}
 }
 
@@ -419,6 +441,9 @@ input.btn {
 		p {
 		   top: 90px;
 		}
+	   }
+	   img {
+		max-width:120px;
 	   }
 	}
 }
