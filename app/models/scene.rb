@@ -13,6 +13,7 @@
 #
 
 class Scene < ActiveRecord::Base
-  attr_accessible :entry, :image, :project_id, :themes, :name
+  attr_accessible :entry, :image, :project_id, :themes, :name, :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 end

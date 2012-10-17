@@ -12,6 +12,7 @@
 #
 
 class Location < ActiveRecord::Base
-  attr_accessible :description, :image, :name, :project_id
+  attr_accessible :description, :image, :name, :project_id, :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 end

@@ -12,6 +12,7 @@
 #
 
 class Music < ActiveRecord::Base
-  attr_accessible :artist, :project_id, :spotify_uri, :name
+  attr_accessible :artist, :project_id, :spotify_uri, :name, :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 end

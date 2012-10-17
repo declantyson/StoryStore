@@ -11,15 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121017153427) do
+ActiveRecord::Schema.define(:version => 20121017163546) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
     t.string   "personality"
     t.string   "quotes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -40,8 +44,12 @@ ActiveRecord::Schema.define(:version => 20121017153427) do
   create_table "inspirations", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -49,8 +57,12 @@ ActiveRecord::Schema.define(:version => 20121017153427) do
     t.integer  "project_id"
     t.string   "image"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "microposts", :force => true do |t|
@@ -65,8 +77,12 @@ ActiveRecord::Schema.define(:version => 20121017153427) do
     t.integer  "project_id"
     t.string   "artist"
     t.string   "spotify_uri"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "projects", :force => true do |t|
@@ -88,8 +104,12 @@ ActiveRecord::Schema.define(:version => 20121017153427) do
     t.integer  "project_id"
     t.string   "entry"
     t.string   "themes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", :force => true do |t|

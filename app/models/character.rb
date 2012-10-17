@@ -13,6 +13,7 @@
 #
 
 class Character < ActiveRecord::Base
-  attr_accessible :image, :name, :personality, :project_id, :quotes
+  attr_accessible :image, :name, :personality, :project_id, :quotes, :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 end

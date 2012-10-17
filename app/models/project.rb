@@ -47,8 +47,8 @@ class Project < ActiveRecord::Base
   def get_thing(thing)
     a = []
     self.send(thing.to_sym).each_index do |i|
-      # img = "<img src='#{self.projects[i].thumbnail.url}' alt='#{self.projects[i].title}'/>"
-      a << "<a href='/#{thing}/#{self.send(thing.to_sym)[i].id}'><div class='box populated-box'>#{}<div class='title'><p>#{self.send(thing.to_sym)[i].name}</p></div></div></a>"
+	    img = "<img src='#{self.send(thing.to_sym)[i].image.url}' alt='#{self.send(thing.to_sym)[i].name}'/>"
+      a << "<a href='/#{thing}/#{self.send(thing.to_sym)[i].id}?id=#{self.id}'><div class='box populated-box'>#{img}<div class='title'><p>#{self.send(thing.to_sym)[i].name}</p></div></div></a>"
     end
     a.join.html_safe
   end
