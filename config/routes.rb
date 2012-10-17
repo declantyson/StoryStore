@@ -1,4 +1,12 @@
 GreatBritishDangerzone::Application.routes.draw do
+  get "scenes/new"
+
+  get "scenes/create"
+
+  get "scene/new"
+
+  get "scene/create"
+
   root to: 'static_pages#home'
 
 

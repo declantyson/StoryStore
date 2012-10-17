@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010121413) do
+ActiveRecord::Schema.define(:version => 20121017153427) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
-    t.string   "image"
     t.string   "personality"
     t.string   "quotes"
     t.datetime "created_at",  :null => false
@@ -39,8 +38,7 @@ ActiveRecord::Schema.define(:version => 20121010121413) do
   end
 
   create_table "inspirations", :force => true do |t|
-    t.string   "title"
-    t.string   "image"
+    t.string   "name"
     t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -63,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20121010121413) do
   end
 
   create_table "musics", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.integer  "project_id"
     t.string   "artist"
     t.string   "spotify_uri"
@@ -86,9 +84,8 @@ ActiveRecord::Schema.define(:version => 20121010121413) do
   end
 
   create_table "scenes", :force => true do |t|
-    t.string   "title"
+    t.string   "name"
     t.integer  "project_id"
-    t.string   "image"
     t.string   "entry"
     t.string   "themes"
     t.datetime "created_at", :null => false

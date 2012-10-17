@@ -6,7 +6,6 @@
   <tr>
     <th>Title</th>
     <th>Project</th>
-    <th>Image</th>
     <th>Entry</th>
     <th>Themes</th>
     <th></th>
@@ -16,9 +15,8 @@
 
 <% @scenes.each do |scene| %>
   <tr>
-    <td><%= scene.title %></td>
+    <td><%= scene.name %></td>
     <td><%= scene.project_id %></td>
-    <td><%= scene.image %></td>
     <td><%= scene.entry %></td>
     <td><%= scene.themes %></td>
     <td><%= link_to 'Show', scene %></td>

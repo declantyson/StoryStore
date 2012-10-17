@@ -14,8 +14,8 @@
         <p><strong>Format</strong></p>
         <p><%= lookup_format(@project.format) %></p>
       </div>
-      <p><strong>Synopsis</strong></p>
-      <p><%= @project.synopsis %></p>
+      <p><strong>Synopsis</strong><span class="show-synopsis"><img src="/assets/show-more.png"></span></p>
+      <p class="synopsis"><%= @project.synopsis %></p>
     <% if signed_in? && current_user.id == @project.user_id %>
     <center>
       <%= link_to 'Edit project <i class="icon-wrench"></i>'.html_safe, edit_project_path(@project), class: "btn btn-large btn-primary" %>
@@ -40,22 +40,27 @@
 
 <div class="box-group character-boxes">
   <h3>Characters</h3>
+  <%= @project.get_thing("characters") %>
 </div>
 
 <div class="box-group scene-boxes">
   <h3>Scenes/Chapters</h3>
+  <%= @project.get_thing("scenes") %>
 </div>
 
 <div class="box-group location-boxes">
   <h3>Locations</h3>
+  <%= @project.get_thing("locations") %>
 </div>
 
 <div class="box-group music-boxes">
   <h3>Music</h3>
+  <%= @project.get_thing("musics") %>
 </div>
 
 <div class="box-group inspiration-boxes">
   <h3>Inspiration</h3>
+  <%= @project.get_thing("inspirations") %>
 </div>
 
 <div class="box-group feedback-boxes">
@@ -63,6 +68,3 @@
 </div>
 
 <div class="clearfix"></div>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

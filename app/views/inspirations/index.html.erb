@@ -4,7 +4,6 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Image</th>
     <th>Project</th>
     <th></th>
     <th></th>
@@ -13,8 +12,7 @@
 
 <% @inspirations.each do |inspiration| %>
   <tr>
-    <td><%= inspiration.title %></td>
-    <td><%= inspiration.image %></td>
+    <td><%= inspiration.name %></td>
     <td><%= inspiration.project_id %></td>
     <td><%= link_to 'Show', inspiration %></td>
     <td><%= link_to 'Edit', edit_inspiration_path(inspiration) %></td>

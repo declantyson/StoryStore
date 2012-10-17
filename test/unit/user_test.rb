@@ -14,6 +14,7 @@
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
 #  remember_token      :string(255)
+#  change_password     :boolean
 #
 
 require 'test_helper'

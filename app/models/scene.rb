@@ -3,7 +3,7 @@
 # Table name: scenes
 #
 #  id         :integer          not null, primary key
-#  title      :string(255)
+#  name       :string(255)
 #  project_id :integer
 #  image      :string(255)
 #  entry      :string(255)
@@ -13,6 +13,6 @@
 #
 
 class Scene < ActiveRecord::Base
-  attr_accessible :entry, :image, :project_id, :themes, :title
+  attr_accessible :entry, :image, :project_id, :themes, :name
   belongs_to :project
 end

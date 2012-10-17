@@ -43,4 +43,13 @@ class Project < ActiveRecord::Base
     avatar_html = "<img src='#{self.thumbnail.url(:original)}'/>"
     avatar_html.html_safe
   end
+  
+  def get_thing(thing)
+    a = []
+    self.send(thing.to_sym).each_index do |i|
+      # img = "<img src='#{self.projects[i].thumbnail.url}' alt='#{self.projects[i].title}'/>"
+      a << "<a href='/#{thing}/#{self.send(thing.to_sym)[i].id}'><div class='box populated-box'>#{}<div class='title'><p>#{self.send(thing.to_sym)[i].name}</p></div></div></a>"
+    end
+    a.join.html_safe
+  end
 end

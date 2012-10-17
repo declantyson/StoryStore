@@ -3,7 +3,7 @@
 # Table name: musics
 #
 #  id          :integer          not null, primary key
-#  title       :string(255)
+#  name        :string(255)
 #  project_id  :integer
 #  artist      :string(255)
 #  spotify_uri :string(255)
@@ -12,6 +12,6 @@
 #
 
 class Music < ActiveRecord::Base
-  attr_accessible :artist, :project_id, :spotify_uri, :title
+  attr_accessible :artist, :project_id, :spotify_uri, :name
   belongs_to :project
 end

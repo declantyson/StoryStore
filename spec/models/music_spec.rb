@@ -3,7 +3,7 @@
 # Table name: musics
 #
 #  id          :integer          not null, primary key
-#  title       :string(255)
+#  name        :string(255)
 #  project_id  :integer
 #  artist      :string(255)
 #  spotify_uri :string(255)
