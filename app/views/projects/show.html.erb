@@ -1,32 +1,68 @@
 <% provide(:title, @project.title) %>
 
+<div id="project-details">
+  <div id="project-image"><%= @project.get_thumbnail() %></div>
+  <div class="details">
+      <h2 style="text-align:center"><%= @project.title %></h2>
+      <p><strong>Author</strong></p>
+      <p><%= User.find(@project.user_id).name %></p>
+      <div class="left">
+        <p><strong>Genre</strong></p>
+        <p><%= lookup_genre(@project.genres) %></p>
+      </div>
+      <div class="right">
+        <p><strong>Format</strong></p>
+        <p><%= lookup_format(@project.format) %></p>
+      </div>
+      <p><strong>Synopsis</strong></p>
+      <p><%= @project.synopsis %></p>
+    <% if signed_in? && current_user.id == @project.user_id %>
+    <center>
+      <%= link_to 'Edit project <i class="icon-wrench"></i>'.html_safe, edit_project_path(@project), class: "btn btn-large btn-primary" %>
+      <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new', class: "btn btn-large" %>
+      <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new', class: "btn btn-large" %>
+      <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new', class: "btn btn-large" %>
+      <%= link_to 'Add new music <i class="icon-music"></i><i class="icon-plus"></i>'.html_safe, '/musics/new', class: "btn btn-large" %>
+      <%= link_to 'Add new inspiration <i class="icon-picture"></i><i class="icon-plus"></i>'.html_safe, '/inspirations/new', class: "btn btn-large" %>
+    </center>
+   	<% else  %>
+  	 	<% if signed_in? %>
+  	 	<center>
+				<%= link_to 'Leave feedback <i class="icon-star-empty icon-white"></i><i class="icon-star icon-white"></i><i class="icon-star icon-white"></i>'.html_safe, '/feedbacks/new', class: "btn btn-large btn-success" %>
+  	 	</center>
+	   	<% end %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
+<div class="box-group character-boxes">
+  <h3>Characters</h3>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @project.user_id %>
-</p>
+<div class="box-group scene-boxes">
+  <h3>Scenes/Chapters</h3>
+</div>
 
-<p>
-  <b>Synopsis:</b>
-  <%= @project.synopsis %>
-</p>
+<div class="box-group location-boxes">
+  <h3>Locations</h3>
+</div>
 
-<p>
-  <b>Genres:</b>
-  <%= @project.genres %>
-</p>
+<div class="box-group music-boxes">
+  <h3>Music</h3>
+</div>
 
-<p>
-  <b>Format:</b>
-  <%= @project.format %>
-</p>
+<div class="box-group inspiration-boxes">
+  <h3>Inspiration</h3>
+</div>
 
+<div class="box-group feedback-boxes">
+  <h3>Feedback</h3>
+</div>
+
+<div class="clearfix"></div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

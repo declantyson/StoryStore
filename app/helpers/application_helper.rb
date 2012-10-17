@@ -47,5 +47,17 @@ module ApplicationHelper
   def get_format_dropdown()
     collection_select("project", "format", format_list(), :first, :last, {:prompt => "Please select"})
   end
+  
+  
+  # Looks up index of genre or format list based on given string
+  def lookup_genre(s)
+  	g = genre_list()
+  	g[s]
+  end
+  
+  def lookup_format(s)
+  	f = format_list()
+  	f[s]
+  end
 
 end

@@ -38,4 +38,9 @@ class Project < ActiveRecord::Base
       self.errors.add(:thumbnail, "should be at least 165px wide") if dimensions.width < 165
      end
   end
+  
+  def get_thumbnail()
+    avatar_html = "<img src='#{self.thumbnail.url(:original)}'/>"
+    avatar_html.html_safe
+  end
 end
