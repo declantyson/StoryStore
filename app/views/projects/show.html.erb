@@ -1,4 +1,11 @@
 <% provide(:title, @project.title) %>
+<div id="overlay">
+</div>
+<div class="frame-container animated"">
+	<iframe style="width:100%;height:100%;overflow-x:hidden;border:none;padding-bottom:5px;">
+	</iframe>
+	<i class="icon-remove close-frame" style="float:right;cursor:pointer"></i>
+</div>
 
 <div id="project-details">
   <div id="project-image"><%= @project.get_thumbnail() %></div>
@@ -17,8 +24,9 @@
       <p><strong>Synopsis</strong><span class="show-synopsis"><img src="/assets/show-more.png"></span></p>
       <p class="synopsis"><%= @project.synopsis %></p>
     <% if signed_in? && current_user.id == @project.user_id %>
+      <% owner = true %>
     <center>
-      <%= link_to 'Edit project <i class="icon-wrench"></i>'.html_safe, edit_project_path(@project), class: "btn btn-large btn-primary" %>
+      <%= link_to 'Edit project <i class="icon-white icon-align-justify"></i>'.html_safe, edit_project_path(@project), class: "btn btn-large btn-primary" %>
       <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new', class: "btn btn-large" %>
       <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new', class: "btn btn-large" %>
       <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new', class: "btn btn-large" %>
@@ -40,27 +48,27 @@
 
 <div class="box-group character-boxes">
   <h3>Characters</h3>
-  <%= @project.get_thing("characters") %>
+  <%= @project.get_thing("characters", owner) %>
 </div>
 
 <div class="box-group scene-boxes">
   <h3>Scenes/Chapters</h3>
-  <%= @project.get_thing("scenes") %>
+  <%= @project.get_thing("scenes", owner) %>
 </div>
 
 <div class="box-group location-boxes">
   <h3>Locations</h3>
-  <%= @project.get_thing("locations") %>
+  <%= @project.get_thing("locations", owner) %>
 </div>
 
 <div class="box-group music-boxes">
   <h3>Music</h3>
-  <%= @project.get_thing("musics") %>
+  <%= @project.get_thing("musics", owner) %>
 </div>
 
 <div class="box-group inspiration-boxes">
   <h3>Inspiration</h3>
-  <%= @project.get_thing("inspirations") %>
+  <%= @project.get_thing("inspirations", owner) %>
 </div>
 
 <div class="box-group feedback-boxes">

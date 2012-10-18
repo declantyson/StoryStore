@@ -44,11 +44,16 @@ class Project < ActiveRecord::Base
     avatar_html.html_safe
   end
   
-  def get_thing(thing)
+  def get_thing(thing, signed_in)
     a = []
+    if signed_in
+    	edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i>"
+    else
+      edit = "<i class='icon-search icon-white view-object' title='View'></i>"
+    end
     self.send(thing.to_sym).each_index do |i|
 	    img = "<img src='#{self.send(thing.to_sym)[i].image.url}' alt='#{self.send(thing.to_sym)[i].name}'/>"
-      a << "<a href='/#{thing}/#{self.send(thing.to_sym)[i].id}?id=#{self.id}'><div class='box populated-box'>#{img}<div class='title'><p>#{self.send(thing.to_sym)[i].name}</p></div></div></a>"
+      a << "<a data-frame='/#{thing}/#{self.send(thing.to_sym)[i].id}' data-project='?id=#{self.id}'><div class='box populated-box'>#{img}<div class='title'><p><span class='object-title'>#{self.send(thing.to_sym)[i].name}</span> #{edit}</p></div></div></a>"
     end
     a.join.html_safe
   end
