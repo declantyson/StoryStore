@@ -2,23 +2,17 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+<%= image_tag @character.image.url, class: "frame-image" %>
+
+<h2 class="frame-title">
   <%= @character.name %>
-</p>
-
-<%= image_tag @character.image.url %>
+</h2>
 
 <p>
-  <b>Personality:</b>
   <%= @character.personality %>
 </p>
 
-<p>
-  <b>Quotes:</b>
+<p style="font-style:italic;">
   <%= @character.quotes %>
 </p>
 
-
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>

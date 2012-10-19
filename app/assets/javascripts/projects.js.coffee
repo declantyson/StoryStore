@@ -12,7 +12,8 @@ $ -> $('.edit-object, .box-group a').click( ->
 	target = $(this).closest('a').data('frame')
 	target += "/edit" if $(this).hasClass("edit-object")
 	target += $(this).closest('a').data('project')
-	target += "&lightbox=true"
+	if !$(this).hasClass("edit-object")
+		target += "&lightbox=true"
 	openFrame(target) 
 )
 
@@ -24,6 +25,15 @@ $ -> $(window).keydown((e) ->
 	closeFrame() if e.keyCode == 27
 )
 
-openFrame = (target) -> console.log(target);$("#overlay").fadeIn(); $(".frame-container").show().removeClass("bounceOutUp").addClass("bounceInDown"); $('iframe').attr('src', target)
+openFrame = (target) -> 
+	if window.edit == true
+		window.location.href = target
+	else
+		$("#overlay").fadeIn()
+		$(".frame-container").show().removeClass("bounceOutUp").addClass("bounceInDown")
+		$('iframe').attr('src', target)
 
-closeFrame = () -> $("#overlay").fadeOut(); $(".frame-container").removeClass("bounceInDown").addClass("bounceOutUp"); window.edit = false; $('iframe').attr('src', '')
+closeFrame = () -> 
+	$("#overlay").fadeOut()
+	$(".frame-container").removeClass("bounceInDown").addClass("bounceOutUp")
+	window.edit = false; $('iframe').attr('src', '')

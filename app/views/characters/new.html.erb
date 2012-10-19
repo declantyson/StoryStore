@@ -1,7 +1,12 @@
+<% if signed_in? %>
 <% provide(:title, 'New Character') %>
 
-<h1>New character</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', characters_path %>
+	<div class="hero-unit">
+	<h1>New Character</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>

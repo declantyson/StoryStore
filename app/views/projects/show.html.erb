@@ -26,12 +26,12 @@
     <% if signed_in? && current_user.id == @project.user_id %>
       <% owner = true %>
     <center>
-      <%= link_to 'Edit project <i class="icon-white icon-align-justify"></i>'.html_safe, edit_project_path(@project), class: "btn btn-large btn-primary" %>
-      <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new', class: "btn btn-large" %>
-      <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new', class: "btn btn-large" %>
-      <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new', class: "btn btn-large" %>
-      <%= link_to 'Add new music <i class="icon-music"></i><i class="icon-plus"></i>'.html_safe, '/musics/new', class: "btn btn-large" %>
-      <%= link_to 'Add new inspiration <i class="icon-picture"></i><i class="icon-plus"></i>'.html_safe, '/inspirations/new', class: "btn btn-large" %>
+      <%= link_to 'Edit project <i class="icon-white icon-align-justify"></i>'.html_safe, edit_project_path(@project).to_s, class: "btn btn-large btn-primary" %>
+      <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
+      <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
+      <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
+      <%= link_to 'Add new music <i class="icon-music"></i><i class="icon-plus"></i>'.html_safe, '/musics/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
+      <%= link_to 'Add new inspiration <i class="icon-picture"></i><i class="icon-plus"></i>'.html_safe, '/inspirations/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
     </center>
    	<% else  %>
   	 	<% if signed_in? %>

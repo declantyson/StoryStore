@@ -1,5 +1,5 @@
 module ApplicationHelper
-
+  
   # list of genres
   def genre_list()
     genres = {}

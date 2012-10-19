@@ -24,17 +24,24 @@ class CharactersController < ApplicationController
   # GET /characters/new
   # GET /characters/new.json
   def new
-    @character = Character.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @character }
+		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+	    @character = Character.new
+    	respond_to do |format|
+      	format.html # new.html.erb
+      	format.json { render json: @character }
+    	end
+    else
+	  	redirect_to "/"
     end
   end
 
   # GET /characters/1/edit
   def edit
-    @character = Character.find(params[:id])
+ 		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Character.find(params[:id]).project_id == Project.find(params[:pid]).id
+	    @character = Character.find(params[:id])
+	  else
+	  	redirect_to "/"
+	  end
   end
 
   # POST /characters
