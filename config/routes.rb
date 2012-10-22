@@ -1,4 +1,6 @@
 GreatBritishDangerzone::Application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+
   get "scenes/new"
 
   get "scenes/create"

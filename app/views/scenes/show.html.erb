@@ -1,27 +1,8 @@
 <% provide(:title, @scene.name) %>
 
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @scene.name %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @scene.project_id %>
-</p>
-
-<p>
-  <b>Entry:</b>
-  <%= @scene.entry %>
-</p>
-
-<p>
-  <b>Themes:</b>
-  <%= @scene.themes %>
-</p>
-
-
-<%= link_to 'Edit', edit_scene_path(@scene) %> |
-<%= link_to 'Back', scenes_path %>
+<h1><%= @scene.name %></h1>
+<hr />
+<div id="scene">
+<%= @scene.entry.html_safe %>
+</div>

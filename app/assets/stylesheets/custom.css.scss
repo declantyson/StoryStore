@@ -15,7 +15,6 @@ $grayMediumLight: #eaeaea;
 p#notice{
   display:none;
 }
-
 .alert{
 	width: 50%;
 	position: absolute;
@@ -393,6 +392,12 @@ iframe html body {
 	float:right;
 	max-width:50%;
 	padding-left:10px;
+}
+
+
+#scene h2 {
+	font-family: "Arbutus Slab", serif;
+	color:#333;
 }
 
 @media screen and (max-width: 1080px) {

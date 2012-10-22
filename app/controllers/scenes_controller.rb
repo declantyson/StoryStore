@@ -24,17 +24,24 @@ class ScenesController < ApplicationController
   # GET /scenes/new
   # GET /scenes/new.json
   def new
-    @scene = Scene.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @scene }
+		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+		  @scene = Scene.new
+		  respond_to do |format|
+		    format.html # new.html.erb
+		    format.json { render json: @scene }
+		  end
+    else
+	  	redirect_to "/"
     end
   end
 
   # GET /scenes/1/edit
   def edit
-    @scene = Scene.find(params[:id])
+   	if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Scene.find(params[:id]).project_id == Project.find(params[:pid]).id
+    	@scene = Scene.find(params[:id])
+    else
+	  	redirect_to "/"
+	  end
   end
 
   # POST /scenes

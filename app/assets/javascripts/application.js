@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require redactor-rails
 
 $(document).ready(function(){
 	console.log('firing');

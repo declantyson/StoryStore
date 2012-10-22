@@ -1,2 +1,13 @@
-<h1>Scenes#new</h1>
-<p>Find me in app/views/scenes/new.html.erb</p>
+<div id="overlay"></div>
+<% if signed_in? %>
+<% provide(:title, 'New scene') %>
+
+	<div class="hero-unit">
+	<h1>New scene</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>

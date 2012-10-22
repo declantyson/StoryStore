@@ -1,8 +1,13 @@
+<div id="overlay"></div>
+<% if signed_in? %>
 <% provide(:title, 'Edit scene') %>
 
-<h1>Editing scene</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @scene %> |
-<%= link_to 'Back', scenes_path %>
+	<div class="hero-unit">
+	<h1>Edit scene</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>
