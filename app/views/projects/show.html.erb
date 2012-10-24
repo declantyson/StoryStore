@@ -12,7 +12,7 @@
   <div class="details" style="width:242px;margin:0 auto">
       <h2 style="text-align:center"><%= @project.title %></h2>
       <p><strong>Author</strong></p>
-      <p><%= User.find(@project.user_id).name %></p>
+      <p><%= link_to User.find(@project.user_id).name, User.find(@project.user_id)  %></p>
       <div class="left">
         <p><strong>Genre</strong></p>
         <p><%= lookup_genre(@project.genres) %></p>

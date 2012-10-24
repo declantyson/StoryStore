@@ -428,6 +428,12 @@ iframe html body {
 	color:#333;
 }
 
+.spotify-frame {
+	width:50%;
+	float:left;
+	text-align:center;
+}
+
 @media screen and (max-width: 1080px) {
 	.form {
 		width:37%;
@@ -477,7 +483,7 @@ iframe html body {
 	h1#register {
 		float:left;
 	}
-	header {
+	header.navbar-fixed-top {
 		position:absolute;
 	}
 	header .project-title {
@@ -555,6 +561,13 @@ iframe html body {
 		margin: 0;
 		padding: 0;
 		font-size: 1.6em;
+	}
+	.spotify-frame {
+		width:100%;
+		float:none;
+	}
+	.music-image {
+		display:none;
 	}
 }
 @media screen and (max-width: 320px) {

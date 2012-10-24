@@ -35,7 +35,7 @@ $ -> $(window).keydown((e) ->
 	closeFrame() if e.keyCode == 27
 )
 
-openFrame = (target) -> 
+openFrame = (target) ->
 	if window.edit == true
 		window.location.href = target
 	else if window.scene == true and $(window).width() < 740

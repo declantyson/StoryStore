@@ -2,26 +2,15 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @music.name %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @music.project_id %>
-</p>
-
-<p>
-  <b>Artist:</b>
-  <%= @music.artist %>
-</p>
-
-<p>
-  <b>Spotify uri:</b>
-  <%= @music.spotify_uri %>
-</p>
-
-
-<%= link_to 'Edit', edit_music_path(@music) %> |
-<%= link_to 'Back', musics_path %>
+<h1><%= @music.name %></h1>
+<hr/>
+<div class="spotify-frame">
+	<% if !@music.spotify_uri.blank? %>
+		<iframe src='https://embed.spotify.com/?uri=<%= @music.spotify_uri %>' width='250' height='80' frameborder='0' allowtransparency='true'></iframe>
+	<% else %>
+		<p>Want to play your spotify songs from here? Right click on the track in Spotify, select "Copy Spotify URI" and insert it into the Spotify URI field!</p>
+	<% end %>
+</div>
+<div style="text-align: center;width: 48%;float: right;">
+	<%= image_tag @music.image.url, class: "music-image", style: "float:none;" %>
+</div>

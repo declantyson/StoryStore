@@ -48,10 +48,10 @@ class ScenesController < ApplicationController
   # POST /scenes.json
   def create
     @scene = Scene.new(params[:scene])
-
+		@project = Project.find(@scene.project_id)
     respond_to do |format|
       if @scene.save
-        format.html { redirect_to @scene, notice: 'Scene was successfully created.' }
+        format.html { redirect_to @project, notice: 'Scene was successfully created.' }
         format.json { render json: @scene, status: :created, location: @scene }
       else
         format.html { render action: "new" }
@@ -64,10 +64,10 @@ class ScenesController < ApplicationController
   # PUT /scenes/1.json
   def update
     @scene = Scene.find(params[:id])
-
+		@project = Project.find(@scene.project_id)
     respond_to do |format|
       if @scene.update_attributes(params[:scene])
-        format.html { redirect_to @scene, notice: 'Scene was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Scene was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

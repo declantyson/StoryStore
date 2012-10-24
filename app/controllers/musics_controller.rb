@@ -25,26 +25,33 @@ class MusicsController < ApplicationController
   # GET /musics/new.json
   def new
     @music = Music.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @music }
-    end
+		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+		  respond_to do |format|
+		    format.html # new.html.erb
+		    format.json { render json: @music }
+		  end
+		else
+      redirect_to "/"
+	 	end
   end
 
   # GET /musics/1/edit
   def edit
-    @music = Music.find(params[:id])
+ 		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Music.find(params[:id]).project_id == Project.find(params[:pid]).id
+	    @music = Music.find(params[:id])
+	  else
+	  	redirect_to '/'
+	  end
   end
 
   # POST /musics
   # POST /musics.json
   def create
     @music = Music.new(params[:music])
-
+		@project = Project.find(@music.project_id)
     respond_to do |format|
       if @music.save
-        format.html { redirect_to @music, notice: 'Music was successfully created.' }
+        format.html { redirect_to @project, notice: 'Music was successfully created.' }
         format.json { render json: @music, status: :created, location: @music }
       else
         format.html { render action: "new" }
@@ -57,10 +64,10 @@ class MusicsController < ApplicationController
   # PUT /musics/1.json
   def update
     @music = Music.find(params[:id])
-
+		@project = Project.find(@music.project_id)
     respond_to do |format|
       if @music.update_attributes(params[:music])
-        format.html { redirect_to @music, notice: 'Music was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Music was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

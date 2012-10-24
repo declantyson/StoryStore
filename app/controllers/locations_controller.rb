@@ -25,11 +25,14 @@ class LocationsController < ApplicationController
   # GET /locations/new.json
   def new
     @location = Location.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @location }
-    end
+		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @location }
+      end
+    else
+      redirect_to "/"
+	 	end
   end
 
   # GET /locations/1/edit

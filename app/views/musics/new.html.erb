@@ -1,7 +1,12 @@
-<% provide(:title, 'New music') %>
+<% if signed_in? %>
+<% provide(:title, 'New Music') %>
 
-<h1>New music</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', musics_path %>
+	<div class="hero-unit">
+	<h1>New music</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>
