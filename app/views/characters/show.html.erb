@@ -2,11 +2,12 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @character.image.url, class: "frame-image" %>
-
-<h2 class="frame-title">
+<h1 class="frame-title">
   <%= @character.name %>
-</h2>
+</h1>
+<hr/>
+
+<%= image_tag @character.image.url, class: "frame-image" %>
 
 <p>
   <%= @character.personality %>

@@ -47,9 +47,7 @@ class Project < ActiveRecord::Base
   def get_thing(thing, signed_in)
     a = []
     if signed_in
-    	edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i>"
-    else
-      edit = "<i class='icon-search icon-white view-object' title='View'></i>"
+    	edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><i class='icon-trash icon-white delete-object' title='Delete'></i>"
     end
     self.send(thing.to_sym).each_index do |i|
 	    img = "<img src='#{self.send(thing.to_sym)[i].image.url}' alt='#{self.send(thing.to_sym)[i].name}'/>"

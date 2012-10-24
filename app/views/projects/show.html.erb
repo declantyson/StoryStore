@@ -9,7 +9,7 @@
 
 <div id="project-details">
   <div id="project-image"><%= @project.get_thumbnail() %></div>
-  <div class="details">
+  <div class="details" style="width:242px;margin:0 auto">
       <h2 style="text-align:center"><%= @project.title %></h2>
       <p><strong>Author</strong></p>
       <p><%= User.find(@project.user_id).name %></p>
@@ -23,9 +23,10 @@
       </div>
       <p><strong>Synopsis</strong><span class="show-synopsis"><img src="/assets/show-more.png"></span></p>
       <p class="synopsis"><%= @project.synopsis %></p>
-    <% if signed_in? && current_user.id == @project.user_id %>
+  </div>
+      <% if signed_in? && current_user.id == @project.user_id %>
       <% owner = true %>
-    <center>
+      <center>
       <%= link_to 'Edit project <i class="icon-white icon-align-justify"></i>'.html_safe, edit_project_path(@project).to_s, class: "btn btn-large btn-primary" %>
       <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
       <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
@@ -40,7 +41,6 @@
   	 	</center>
 	   	<% end %>
     <% end %>
-  </div>
   <div class="clearfix"></div>
 </div>
 
