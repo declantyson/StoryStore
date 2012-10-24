@@ -213,11 +213,13 @@ footer ul {
    max-width:320px;
    margin: 0 auto;
    text-align:center;
-   height:320px;
+	 max-height: 320px;
+	 height: auto;
 }
 
 #project-image img {
-	max-height: 100%;
+	max-height: 320px;
+	height: auto;
 }
 
 #project-image .blank {
@@ -400,6 +402,15 @@ iframe html body {
 	max-height:300px;
 }
 
+.personality, .quotes {
+	max-height: 110px;
+	overflow: auto;
+	word-wrap: break-word;
+}
+
+.quotes {
+	font-style:italic;
+}
 
 #scene h2 {
 	font-family: "Arbutus Slab", serif;

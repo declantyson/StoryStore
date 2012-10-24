@@ -9,11 +9,11 @@
 
 <%= image_tag @character.image.url, class: "frame-image" %>
 
-<p>
+<p class="personality">
   <%= @character.personality %>
 </p>
 
-<p style="font-style:italic;">
-  <%= @character.quotes %>
+<p class="quotes" style="font-style:italic;">
+  "<%= @character.quotes %>"
 </p>
 

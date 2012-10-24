@@ -64,10 +64,10 @@ class CharactersController < ApplicationController
   # PUT /characters/1.json
   def update
     @character = Character.find(params[:id])
-
+		@project = Project.find(@character.project_id)
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Character was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
