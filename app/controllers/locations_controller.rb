@@ -34,17 +34,21 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = Location.find(params[:id])
+ 		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Location.find(params[:id]).project_id == Project.find(params[:pid]).id
+	    @location = Location.find(params[:id])
+	  else
+	  	redirect_to "/"
+	  end
   end
 
   # POST /locations
   # POST /locations.json
   def create
     @location = Location.new(params[:location])
-
+		@project = Project.find(@location.project_id)
     respond_to do |format|
       if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.html { redirect_to @project, notice: 'Location was successfully created.' }
         format.json { render json: @location, status: :created, location: @location }
       else
         format.html { render action: "new" }
@@ -57,10 +61,10 @@ class LocationsController < ApplicationController
   # PUT /locations/1.json
   def update
     @location = Location.find(params[:id])
-
+		@project = Project.find(@location.project_id)
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

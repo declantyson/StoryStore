@@ -1,7 +1,12 @@
-<% provide(:title, 'New location') %>
+<% if signed_in? %>
+<% provide(:title, 'New Location') %>
 
-<h1>New location</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', locations_path %>
+	<div class="hero-unit">
+	<h1>New Location</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>

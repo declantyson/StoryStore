@@ -1,3 +1,4 @@
+<% if params[:pid] != nil %>
 <%= form_for(@location) do |f| %>
   <% if @location.errors.any? %>
     <div id="error_explanation">
@@ -10,20 +11,33 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br />
-    <%= f.number_field :project_id %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 	<div class="pro-avatar">
+		<img src="<%= @location.image.url %>" alt=''/>
+	</div>
+	<div class="form">
+		<div class="field">
+		  <%= f.label :name %>
+		  <%= f.text_field :name %>
+		</div>
+		<div class="field">
+			<%= f.label :thumbnail %>
+			<p style="font-size: 10px;margin: 0;line-height: 10px;color:#9b1031;">Recommended minimum size: 165x165px</p>
+			<%= f.file_field :image %>
+		</div>
+		<div class="field">
+		  <%= f.hidden_field :project_id, value: params[:pid] %>
+		</div>
+		<div class="field">
+		  <%= f.label :description %>
+		  <%= f.text_area :description, resize: 'vertical' %>
+		</div>
+		<div class="actions">
+		  <%= f.submit class: "btn large-btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
+<% else %>
+	<script>
+		window.location = "/";
+	</script>
 <% end %>

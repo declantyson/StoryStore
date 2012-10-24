@@ -247,6 +247,7 @@ footer ul {
 
 .box .title {
 	display:none;
+	cursor:pointer;
 	color: #FFFFFF;
 	position: absolute;
 	z-index: 80;
@@ -402,8 +403,18 @@ iframe html body {
 	max-height:300px;
 }
 
+.location-image {
+	padding-bottom:10px;
+}
+
 .personality, .quotes {
 	max-height: 110px;
+	overflow: auto;
+	word-wrap: break-word;
+}
+
+.location-description{
+	max-height:55px;
 	overflow: auto;
 	word-wrap: break-word;
 }
@@ -534,6 +545,10 @@ iframe html body {
 	.frame-container {
 		margin-left: 0;
 		height:320px;
+	}
+	
+	.location-image {
+		max-height: 150px;
 	}
 
 	.frame-title {
