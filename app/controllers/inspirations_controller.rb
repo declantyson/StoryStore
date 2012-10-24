@@ -73,11 +73,17 @@ class InspirationsController < ApplicationController
   # DELETE /inspirations/1.json
   def destroy
     @inspiration = Inspiration.find(params[:id])
-    @inspiration.destroy
-
-    respond_to do |format|
-      format.html { redirect_to inspirations_url }
-      format.json { head :no_content }
-    end
+    @project = Project.find(@inspiration.project_id)
+    @owner = User.find(@project.user_id)
+    if @owner.id == current_user.id
+	    @inspiration.destroy
+	
+  	  respond_to do |format|
+  	    format.html { redirect_to @project }
+  	    format.json { head :no_content }
+  	  end
+  	else
+	  	redirect_to "/"
+  	end
   end
 end

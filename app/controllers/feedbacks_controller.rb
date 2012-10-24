@@ -73,11 +73,14 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1.json
   def destroy
     @feedback = Feedback.find(params[:id])
-    @feedback.destroy
-
-    respond_to do |format|
-      format.html { redirect_to feedbacks_url }
-      format.json { head :no_content }
-    end
+    @owner = User.find(@feedback.user_id)
+    if @owner.id == current_user.id
+	    @character.destroy
+	
+  	  respond_to do |format|
+  	    format.html { redirect_to @owner }
+  	    format.json { head :no_content }
+  	  end
+  	end
   end
 end

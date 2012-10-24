@@ -80,11 +80,17 @@ class ScenesController < ApplicationController
   # DELETE /scenes/1.json
   def destroy
     @scene = Scene.find(params[:id])
-    @scene.destroy
-
-    respond_to do |format|
-      format.html { redirect_to scenes_url }
-      format.json { head :no_content }
-    end
+    @project = Project.find(@scene.project_id)
+    @owner = User.find(@project.user_id)
+    if @owner.id == current_user.id
+	    @scene.destroy
+	
+  	  respond_to do |format|
+  	    format.html { redirect_to @project }
+  	    format.json { head :no_content }
+  	  end
+  	else
+	  	redirect_to "/"
+  	end
   end
 end

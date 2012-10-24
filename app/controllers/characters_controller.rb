@@ -80,11 +80,17 @@ class CharactersController < ApplicationController
   # DELETE /characters/1.json
   def destroy
     @character = Character.find(params[:id])
-    @character.destroy
-
-    respond_to do |format|
-      format.html { redirect_to characters_url }
-      format.json { head :no_content }
-    end
+    @project = Project.find(@character.project_id)
+    @owner = User.find(@project.user_id)
+    if @owner.id == current_user.id
+	    @character.destroy
+	
+  	  respond_to do |format|
+  	    format.html { redirect_to @project }
+  	    format.json { head :no_content }
+  	  end
+  	else
+	  	redirect_to "/"
+  	end
   end
 end

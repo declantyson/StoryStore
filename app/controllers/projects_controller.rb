@@ -73,11 +73,16 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
-    end
+    @owner = User.find(@project.user_id)
+    if @owner.id == current_user.id
+	    @project.destroy
+	
+  	  respond_to do |format|
+  	    format.html { redirect_to @owner }
+  	    format.json { head :no_content }
+  	  end
+  	else
+	  	redirect_to "/"
+  	end
   end
 end
