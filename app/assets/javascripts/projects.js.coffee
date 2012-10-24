@@ -4,20 +4,27 @@
 
 window.edit = false
 window.scene = false
+window.delete = false
 
-$ -> $('.edit-object, .box-group a').click( ->
+$ -> $('.edit-object, .delete-object, .box-group span').click( ->
 	$group = $(this).closest('.box-group')
 	window.scene = true if $group.hasClass('scene-boxes')
 	window.edit = true if $(this).hasClass("edit-object")
+	window.delete = true if $(this).hasClass("delete-object")
+	
 	if window.edit == true and !$(this).hasClass("edit-object")
 		return false
 		
-	target = $(this).closest('a').data('frame')
+	if window.delete == true and !$(this).hasClass("delete-object")
+		window.delete = false
+		return
+		
+	target = $(this).closest('span').data('frame')
 	target += "/edit" if $(this).hasClass("edit-object")
-	target += $(this).closest('a').data('project')
+	target += $(this).closest('span').data('project')
 	if !$(this).hasClass("edit-object")
 		target += "&lightbox=true"
-	openFrame(target) 
+	openFrame(target)
 )
 
 $ -> $('#overlay, .close-frame').click( ->
@@ -28,20 +35,17 @@ $ -> $(window).keydown((e) ->
 	closeFrame() if e.keyCode == 27
 )
 
-$ -> $('.delete-object').click( ->
-	del = confirm "Are you sure you want to delete this?"
-	# delete code to go here
-)
-
 openFrame = (target) -> 
 	if window.edit == true
 		window.location.href = target
 	else if window.scene == true and $(window).width() < 740
 		window.location.href = target
-	else
+	else if window.delete == false
 		$("#overlay").fadeIn()
 		$(".frame-container").show().removeClass("bounceOutUp").addClass("bounceInDown")
 		$('iframe').attr('src', target)
+	else
+		return
 
 closeFrame = () -> 
 	$("#overlay").fadeOut()

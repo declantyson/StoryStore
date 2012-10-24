@@ -35,7 +35,6 @@ function addEmptyBoxes(){
 			}
 		} else {
 			newMax = Math.ceil(currentBoxes / maxNoOfBoxes) * maxNoOfBoxes;
-			console.log(newMax);
 			for(i = currentBoxes; i < newMax; i++) {
 				$(this).append('<div class="box empty-box"></div>');
 			}
@@ -66,7 +65,6 @@ $(document).ready(function(){
 	});
 	$('#user_change_password').on('change', function(){
 		if($(this).attr('checked') == 'checked') {
-			console.log($(this).attr('checked'));
 			$('#user_password, #user_password_confirmation').attr('disabled', false);
 			$('#password-area').slideDown(200);
 		} else {

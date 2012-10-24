@@ -16,6 +16,5 @@
 //= require redactor-rails
 
 $(document).ready(function(){
-	console.log('firing');
 	setTimeout(function(){ $('.alert').css({ opacity: 0 }); }, 2500);
 });
