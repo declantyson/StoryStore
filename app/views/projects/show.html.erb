@@ -11,12 +11,16 @@
   <div id="project-image"><%= @project.get_thumbnail() %></div>
   <div class="details" style="width:242px;margin:0 auto">
       <h2 style="text-align:center"><%= @project.title %></h2>
-      <div style="margin:0 auto;width:100px">
-      <% (1..@project.average_feedback_rating).each do |i| %>
-       <span class="star active"></span>
-      <% end %>
-      <% (@project.average_feedback_rating..4).each do |i| %>
-        <span class="star inactive"></span>
+      <div style="margin:0 auto;width:100px;">
+      <% if @project.feedbacks.size > 0 %>
+        <% (1..@project.average_feedback_rating).each do |i| %>
+          <span class="star active"></span>
+        <% end %>
+        <% (@project.average_feedback_rating..4).each do |i| %>
+          <span class="star inactive"></span>
+        <% end %>
+      <% else %>
+        <p style="font-size:11px"><em>No feedback yet!</em></p>
       <% end %>
       </div>
       <div class="clearfix"></div>

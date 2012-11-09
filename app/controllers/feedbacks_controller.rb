@@ -27,6 +27,10 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
     @project = Project.find(params[:pid])
 
+    if @project.user.id == current_user.id
+      redirect_to @project, flash: { error: "You can't leave feedback on your own work!" }
+      return
+    end
 
     respond_to do |format|
       format.html # new.html.erb

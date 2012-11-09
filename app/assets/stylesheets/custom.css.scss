@@ -614,3 +614,11 @@ iframe html body {
 .star.temp-inactive{
     background-position:0 20px;
 }
+
+.feedback-boxes .box {
+    height: 50px;
+}
+
+.feedback-boxes .box .title > p {
+    top: 30px;
+}

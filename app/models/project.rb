@@ -63,7 +63,9 @@ class Project < ActiveRecord::Base
   def get_feedback
     a = []
     self.feedbacks.each do |f|
-      a << "<span data-frame='/feedbacks/#{f.id}' data-project='?pid=#{self.id}'><div class='box populated-box'><div class='title'><p><span class='object-title'>#{f.headline}</span></p></div></div></span>"
+      a << "<span data-frame='/feedbacks/#{f.id}' data-project='?pid=#{self.id}'><div class='box populated-box'>"
+      (1..f.rating).each { |r| a << "<span class='star active'></span>" }
+      a << "<div class='title'><p><span class='object-title'>#{f.headline}</span></p></div></div></span>"
     end
     a.join.html_safe
   end
