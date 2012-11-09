@@ -586,3 +586,15 @@ iframe html body {
 	   line-height:20px;
 	}
 }
+
+.spotify-play-button {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+  position:absolute;
+  z-index:90;
+  margin-top: 40%;
+  margin-left: 40%;
+}

@@ -1,8 +1,8 @@
 <% provide(:title, @project.title) %>
 <div id="overlay">
 </div>
-<div class="frame-container animated"">
-	<iframe style="width:100%;height:100%;overflow-x:hidden;border:none;padding-bottom:5px;">
+<div class="frame-container animated">
+	<iframe style="width:100%;height:100%;overflow-x:hidden;border:none;padding-bottom:5px;" class="frame">
 	</iframe>
 	<i class="icon-remove close-frame" style="float:right;cursor:pointer"></i>
 </div>
@@ -63,7 +63,7 @@
 
 <div class="box-group music-boxes">
   <h3>Music</h3>
-  <%= @project.get_thing("musics", owner) %>
+  <%= @project.get_music(owner) %>
 </div>
 
 <div class="box-group inspiration-boxes">

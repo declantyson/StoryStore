@@ -43,11 +43,20 @@ openFrame = (target) ->
 	else if window.delete == false
 		$("#overlay").fadeIn()
 		$(".frame-container").show().removeClass("bounceOutUp").addClass("bounceInDown")
-		$('iframe').attr('src', target)
+		$('.frame').attr('src', target)
 	else
 		return
 
 closeFrame = () -> 
 	$("#overlay").fadeOut()
 	$(".frame-container").removeClass("bounceInDown").addClass("bounceOutUp")
-	window.edit = false; $('iframe').attr('src', '')
+	window.edit = false; $('.frame').attr('src', '')
+
+
+$ -> $('.spotify-play-button').mouseover( ->
+	$(this).fadeTo(100, 1)
+)
+
+$ -> $('.spotify-play-button').mouseout( ->
+	$(this).fadeTo(100, 0.8)
+)

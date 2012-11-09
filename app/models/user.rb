@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  has_many :projects
+  has_many :projects, :dependent => :destroy
   has_many :feedbacks
 
   #Gets a list of projects by user
