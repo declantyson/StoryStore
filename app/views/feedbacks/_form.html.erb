@@ -1,4 +1,4 @@
-<%= form_for(@feedback) do |f| %>
+<%= form_for(@feedback, :url => { :action => :create, :pid => params[:pid] }) do |f| %>
   <% if @feedback.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
@@ -10,46 +10,31 @@
       </ul>
     </div>
   <% end %>
-
+<div class="form">
   <div class="field">
     <%= f.label :headline %><br />
     <%= f.text_field :headline %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.number_field :rating %>
+    <%= f.label :rating %>
+    <span class="star input-star active" data-value="1"></span>
+    <span class="star input-star active" data-value="2"></span>
+    <span class="star input-star active" data-value="3"></span>
+    <span class="star input-star" data-value="4"></span>
+    <span class="star input-star" data-value="5"></span>
+    <%= f.hidden_field :rating, value: 3 %>
+    <div class="clearfix"></div>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :project_id %><br />
-    <%= f.number_field :project_id %>
+    <%= f.hidden_field :project_id, value: params[:pid] %>
   </div>
-  <div class="field">
-    <%= f.label :scene_id %><br />
-    <%= f.number_field :scene_id %>
-  </div>
-  <div class="field">
-    <%= f.label :character_id %><br />
-    <%= f.number_field :character_id %>
-  </div>
-  <div class="field">
-    <%= f.label :location_id %><br />
-    <%= f.number_field :location_id %>
-  </div>
-  <div class="field">
-    <%= f.label :music_id %><br />
-    <%= f.number_field :music_id %>
-  </div>
-  <div class="field">
-    <%= f.label :inspiration_id %><br />
-    <%= f.number_field :inspiration_id %>
-  </div>
+</div>
   <div class="field">
     <%= f.label :comments %><br />
-    <%= f.text_field :comments %>
+    <%= f.text_area :comments, :style => "resize:none" %>
   </div>
   <div class="actions">
     <%= f.submit %>

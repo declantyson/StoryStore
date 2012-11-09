@@ -25,6 +25,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new.json
   def new
     @feedback = Feedback.new
+    @project = Project.find(params[:pid])
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +36,17 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1/edit
   def edit
-    @feedback = Feedback.find(params[:id])
+    redirect_to "/"
   end
 
   # POST /feedbacks
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(params[:feedback])
-
+    @project = Project.find(@feedback.project_id)
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to @project, notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
         format.html { render action: "new" }
@@ -57,7 +59,7 @@ class FeedbacksController < ApplicationController
   # PUT /feedbacks/1.json
   def update
     @feedback = Feedback.find(params[:id])
-
+    
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
         format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
@@ -72,10 +74,13 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1
   # DELETE /feedbacks/1.json
   def destroy
+    redirect_to "/"
+    return
+
     @feedback = Feedback.find(params[:id])
     @owner = User.find(@feedback.user_id)
     if @owner.id == current_user.id
-	    @character.destroy
+	    @feedback.destroy
 	
   	  respond_to do |format|
   	    format.html { redirect_to @owner }

@@ -2,53 +2,20 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Headline:</b>
+<h1 class="frame-title">
   <%= @feedback.headline %>
-</p>
+  <span style="float:right">
+    <% (1..@feedback.rating).each do |i| %>
+     <span class="star active"></span>
+    <% end %>
+    <% (@feedback.rating..4).each do |i| %>
+      <span class="star inactive"></span>
+    <% end %>
+  </span>
+</h1>
+<hr/>
 
 <p>
-  <b>Rating:</b>
-  <%= @feedback.rating %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @feedback.user_id %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @feedback.project_id %>
-</p>
-
-<p>
-  <b>Scene:</b>
-  <%= @feedback.scene_id %>
-</p>
-
-<p>
-  <b>Character:</b>
-  <%= @feedback.character_id %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @feedback.location_id %>
-</p>
-
-<p>
-  <b>Music:</b>
-  <%= @feedback.music_id %>
-</p>
-
-<p>
-  <b>Inspiration:</b>
-  <%= @feedback.inspiration_id %>
-</p>
-
-<p>
-  <b>Comments:</b>
   <%= @feedback.comments %>
 </p>
 

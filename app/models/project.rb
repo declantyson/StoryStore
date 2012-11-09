@@ -32,6 +32,22 @@ class Project < ActiveRecord::Base
   before_save validate :validate_proj_thumbnail
   has_attached_file :thumbnail, styles: { medium: "300x300>", thumb: "100x100>" }
 
+  def feedback_rating
+    total = 0.0
+    self.feedbacks.each do |f|
+      total += f.rating
+    end
+    avg = total / self.feedbacks.size
+  end  
+
+  def average_feedback_rating
+    feedback_rating.to_i
+  end
+
+  def total_feedback_rating
+    average_feedback_rating.round(2)
+  end
+
   def validate_proj_thumbnail
      if self.thumbnail.queued_for_write[:original]
       dimensions = Paperclip::Geometry.from_file(self.thumbnail.queued_for_write[:original])
@@ -42,6 +58,14 @@ class Project < ActiveRecord::Base
   def get_thumbnail()
     avatar_html = "<img src='#{self.thumbnail.url(:original)}'/>"
     avatar_html.html_safe
+  end
+
+  def get_feedback
+    a = []
+    self.feedbacks.each do |f|
+      a << "<span data-frame='/feedbacks/#{f.id}' data-project='?pid=#{self.id}'><div class='box populated-box'><div class='title'><p><span class='object-title'>#{f.headline}</span></p></div></div></span>"
+    end
+    a.join.html_safe
   end
 
   def get_music(signed_in)

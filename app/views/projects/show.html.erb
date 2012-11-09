@@ -11,6 +11,15 @@
   <div id="project-image"><%= @project.get_thumbnail() %></div>
   <div class="details" style="width:242px;margin:0 auto">
       <h2 style="text-align:center"><%= @project.title %></h2>
+      <div style="margin:0 auto;width:100px">
+      <% (1..@project.average_feedback_rating).each do |i| %>
+       <span class="star active"></span>
+      <% end %>
+      <% (@project.average_feedback_rating..4).each do |i| %>
+        <span class="star inactive"></span>
+      <% end %>
+      </div>
+      <div class="clearfix"></div>
       <p><strong>Author</strong></p>
       <p><%= link_to User.find(@project.user_id).name, User.find(@project.user_id)  %></p>
       <div class="left">
@@ -37,7 +46,7 @@
    	<% else  %>
   	 	<% if signed_in? %>
   	 	<center>
-				<%= link_to 'Leave feedback <i class="icon-star-empty icon-white"></i><i class="icon-star icon-white"></i><i class="icon-star icon-white"></i>'.html_safe, '/feedbacks/new', class: "btn btn-large btn-success" %>
+				<%= link_to 'Leave feedback <i class="icon-star-empty icon-white"></i><i class="icon-star icon-white"></i><i class="icon-star icon-white"></i>'.html_safe, "/feedbacks/new?pid=#{@project.id}", class: "btn btn-large btn-success" %>
   	 	</center>
 	   	<% end %>
     <% end %>
@@ -73,6 +82,7 @@
 
 <div class="box-group feedback-boxes">
   <h3>Feedback</h3>
+  <%= @project.get_feedback %>
 </div>
 
 <div class="clearfix"></div>

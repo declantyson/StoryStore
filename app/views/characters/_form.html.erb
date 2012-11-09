@@ -1,5 +1,6 @@
 <% if params[:pid] != nil %>
-<%= form_for(@character) do |f| %>
+<% action = @character.new_record? ? "create" : "update" %>
+<%= form_for(@character, :url => { :action => action, :pid => params[:pid] }) do |f| %>
 		<% if @character.errors.any? %>
 		  <div id="error_explanation">
 		    <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>

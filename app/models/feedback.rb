@@ -26,4 +26,8 @@ class Feedback < ActiveRecord::Base
   belongs_to :location
   belongs_to :music
   belongs_to :inspiration
+
+  validates	:headline, :presence => true, :length => 3..15
+  validates :rating, :inclusion => 1..5
+  validates :comments, :length => { :maximum => 200 }
 end

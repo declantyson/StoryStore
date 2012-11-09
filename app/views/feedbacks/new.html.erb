@@ -1,7 +1,12 @@
-<% provide(:title, 'New feedback') %>
+<% if signed_in? %>
+<% provide(:title, 'New Feedback') %>
 
-<h1>New feedback</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', feedbacks_path %>
+	<div class="hero-unit">
+	<h1>New Feedback</h1>	
+	<%= render 'form' %>
+	</div>
+<% else %>
+	<script>
+		window.location = "/register";
+	</script>
+<% end %>
