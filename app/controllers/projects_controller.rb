@@ -35,6 +35,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    redirect_to "/" if @project.user_id != User.find_by_remember_token(cookies[:remember_token]).id
   end
 
   # POST /projects
