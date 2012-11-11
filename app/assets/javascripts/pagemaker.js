@@ -7,7 +7,7 @@ function addEmptyBoxes(){
 			'min-height' : $('.content').height()
 		});
 		boxWidth = 185;
-		mainWidth = $('.content').width() - 350;
+		mainWidth = $('.content').width() - 360;
 		$('.synopsis').show();
 	} else if (winWidth > 380) {
 		$('#project-details').css({ 

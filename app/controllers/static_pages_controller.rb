@@ -3,6 +3,8 @@ class StaticPagesController < ApplicationController
   end
 
   def home
+  	@projects = Project.all
+  	@projects.sort!{|a, b| b.average_feedback_rating <=> a.average_feedback_rating}
   end
 
   def about

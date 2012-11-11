@@ -41,6 +41,7 @@ class Project < ActiveRecord::Base
   end  
 
   def average_feedback_rating
+    return 0 if self.feedback_rating.nan?
     feedback_rating.to_i
   end
 

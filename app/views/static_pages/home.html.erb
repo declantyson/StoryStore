@@ -1,14 +1,40 @@
 <% provide(:title, 'Home') %>
 
-<div class="center hero-unit">
-  <h1>Story<span style="font-size:1px"> </span>Store</h1>
-  <h2>
-    A place for writers to share, be inspired and just... write!
-  </h2>
   <% if !signed_in? %>
+  <div class="center hero-unit">
+    <h1>Story<span style="font-size:1px"> </span>Store</h1>
+    <h2>
+      A place for writers to share, be inspired and just... write!
+    </h2>
     <%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Register", register_path, class: "btn btn-large btn-secondary" %>
+  </div>
+  <% else %>
+    <div id="project-details">
+      <h1>Welcome back, <%= current_user.name %>!</h1>
+      <h3>Latest News</h3>
+      <h2>StoryStore is nearly ready!</h2>
+      <p><em>11.11.12</em></p>
+      <p>After a month's gruelling work, I've nearly finished the first version of StoryStore! This is my first ever Ruby on Rails experience.</p>
+    </div>
+    <div class="box-group project-boxes">
+      <h3>Highest Rated Projects</h3>
+      <% @projects.each do |p| %>
+        <a href='/projects/<%= p.id %>'>
+          <div class='box populated-box'>
+            <div class='stars' style='height: 20px;position: absolute;z-index: 90;'>
+                <% (1..p.average_feedback_rating).each do |i| %>
+                  <span class="star active"></span>
+                <% end %>
+                <% (p.average_feedback_rating..4).each do |i| %>
+                  <span class="star inactive"></span>
+                <% end %>
+            </div>
+          <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><%= p.title %></p></div></div></a>
+      <% end %> 
+    </div>
+
+    <div class="clearfix"></div>
   <% end %>
-</div>
 
 
