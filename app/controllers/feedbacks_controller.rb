@@ -33,6 +33,13 @@ class FeedbacksController < ApplicationController
       return
     end
 
+    prev_feedback = Feedback.where('project_id = ? AND user_id = ?', params[:pid], current_user.id).order("created_at desc")
+
+    if !prev_feedback.first.nil? && prev_feedback.first.created_at >= 1.day.ago
+      redirect_to @project, flash: { error: "You've already left feedback on this project today. Come back tomorrow and give the author a chance to change things." }
+      return
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @feedback }
