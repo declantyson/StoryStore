@@ -1,16 +1,6 @@
 GreatBritishDangerzone::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
-
-  get "scenes/new"
-
-  get "scenes/create"
-
-  get "scene/new"
-
-  get "scene/create"
-
   root to: 'static_pages#home'
-
 
   resources :feedbacks
 

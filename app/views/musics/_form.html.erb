@@ -1,5 +1,5 @@
-<% if params[:pid] != nil %>
-<%= form_for(@music) do |f| %>
+<% action = @music.new_record? ? "create" : "update" %>
+<%= form_for(@music, :url => { :action => action, :pid => params[:pid] }) do |f| %>
   <% if @music.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@music.errors.count, "error") %> prohibited this music from being saved:</h2>
@@ -35,5 +35,4 @@
 		  <%= f.submit  class: "btn large-btn btn-primary" %>
 		</div>
 	</div>
-	<% end %>
 <% end %>

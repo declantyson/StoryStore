@@ -17,6 +17,7 @@ class Scene < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
   validate :name, :if => :name_is_default?
+  validates :name, :presence => true, :length => 3..100
   
   def name_is_default?
   	self.errors.add(:name, 'your scene!') if name == "Please enter scene title..."

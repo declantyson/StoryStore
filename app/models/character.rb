@@ -17,5 +17,7 @@ class Character < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :length => 3..100
+  validates :personality, :length => { :maximum => 200 }
+  validates :quotes, :length => { :maximum => 200 }
 end
