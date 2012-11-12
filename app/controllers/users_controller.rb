@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    redirect_to '/register', status: :moved_permanently 
+    redirect_to '/register', :status => :moved_permanently 
   end
 
   # GET /users/1
@@ -20,16 +20,16 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+    redirect_to '/register', :status => :moved_permanently
   end
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    if signed_in? && current_user.id == params[:id]
+      @user = User.find(params[:id])
+    else
+      redirect_to "/"
+    end
   end
 
   # POST /users
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
-	sign_in @user
+        sign_in @user
         format.html { redirect_to @user, notice: 'Account created - welcome to StoryStore!' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -56,10 +56,10 @@ class UsersController < ApplicationController
       if params[:user][:change_password] == false
         @user.attributes = params[:user].except(:password, :password_confirmation, :change_password)
       else
-	@user.attributes = params[:user].except(:change_password)
+        @user.attributes = params[:user].except(:change_password)
       end
       if @user.save(validate: false)
-	sign_in @user
+        sign_in @user
         format.html { redirect_to @user, notice: 'Your account was successfully updated.' }
         format.json { head :no_content }
       else

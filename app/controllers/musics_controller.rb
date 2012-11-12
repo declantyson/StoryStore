@@ -2,6 +2,7 @@ class MusicsController < ApplicationController
   # GET /musics
   # GET /musics.json
   def index
+    return head :not_found
     @musics = Music.all
 
     respond_to do |format|
@@ -25,7 +26,7 @@ class MusicsController < ApplicationController
   # GET /musics/new.json
   def new
     @music = Music.new
-		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+		if signed_in? && Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
 		  respond_to do |format|
 		    format.html # new.html.erb
 		    format.json { render json: @music }
@@ -37,7 +38,7 @@ class MusicsController < ApplicationController
 
   # GET /musics/1/edit
   def edit
- 		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Music.find(params[:id]).project_id == Project.find(params[:pid]).id
+ 		if signed_in? && Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Music.find(params[:id]).project_id == Project.find(params[:pid]).id
 	    @music = Music.find(params[:id])
 	  else
 	  	redirect_to '/'

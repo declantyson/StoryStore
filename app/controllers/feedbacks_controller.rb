@@ -2,6 +2,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
+    return head :not_found
     @feedbacks = Feedback.all
 
     respond_to do |format|
@@ -27,8 +28,11 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new
     @project = Project.find(params[:pid])
 
-    if @project.user.id == current_user.id
+    if signed_in? && @project.user.id == current_user.id
       redirect_to @project, flash: { error: "You can't leave feedback on your own work!" }
+      return
+    else
+      redirect_to "/"
       return
     end
 

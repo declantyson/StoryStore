@@ -2,6 +2,7 @@ class InspirationsController < ApplicationController
   # GET /inspirations
   # GET /inspirations.json
   def index
+    return head :not_found
     @inspirations = Inspiration.all
 
     respond_to do |format|
@@ -25,27 +26,34 @@ class InspirationsController < ApplicationController
   # GET /inspirations/new.json
   def new
     @inspiration = Inspiration.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @inspiration }
+    if signed_in? && Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @inspiration }
+      end
+    else
+      redirect_to "/"
     end
   end
 
   # GET /inspirations/1/edit
   def edit
-    @inspiration = Inspiration.find(params[:id])
+    if signed_in? && Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Inspiration.find(params[:id]).project_id == Project.find(params[:pid]).id
+      @inspiration = Inspiration.find(params[:id])
+    else
+      redirect_to "/"
+    end
   end
 
   # POST /inspirations
   # POST /inspirations.json
   def create
     @inspiration = Inspiration.new(params[:inspiration])
-
+    @project = Project.find(@inspiration.project_id)
     respond_to do |format|
       if @inspiration.save
-        format.html { redirect_to @inspiration, notice: 'Inspiration was successfully created.' }
-        format.json { render json: @inspiration, status: :created, location: @inspiration }
+        format.html { redirect_to @project, notice: 'Inspiration was successfully created.' }
+        format.json { render json: @inspiration, status: :created, inspiration: @inspiration }
       else
         format.html { render action: "new" }
         format.json { render json: @inspiration.errors, status: :unprocessable_entity }

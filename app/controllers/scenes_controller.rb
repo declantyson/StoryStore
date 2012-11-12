@@ -2,6 +2,7 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.json
   def index
+    return head :not_found
     @scenes = Scene.all
 
     respond_to do |format|
@@ -24,7 +25,7 @@ class ScenesController < ApplicationController
   # GET /scenes/new
   # GET /scenes/new.json
   def new
-		if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
+		if signed_in? && Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id
 		  @scene = Scene.new
 		  respond_to do |format|
 		    format.html # new.html.erb
@@ -37,7 +38,7 @@ class ScenesController < ApplicationController
 
   # GET /scenes/1/edit
   def edit
-   	if Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Scene.find(params[:id]).project_id == Project.find(params[:pid]).id
+   	if signed_in? &&  Project.find(params[:pid]).user_id == User.find_by_remember_token(cookies[:remember_token]).id && Scene.find(params[:id]).project_id == Project.find(params[:pid]).id
     	@scene = Scene.find(params[:id])
     else
 	  	redirect_to "/"

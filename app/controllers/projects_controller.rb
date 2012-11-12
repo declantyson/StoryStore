@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+    return head :not_found
     @projects = Project.all
 
     respond_to do |format|
@@ -24,18 +25,22 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.json
   def new
-    @project = Project.new
+    if signed_in?
+      @project = Project.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @project }
+      end
+    else 
+      redirect_to "/"
     end
   end
 
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-    redirect_to "/" if @project.user_id != User.find_by_remember_token(cookies[:remember_token]).id
+    redirect_to "/" if !signed_in? || @project.user_id != User.find_by_remember_token(cookies[:remember_token]).id
   end
 
   # POST /projects

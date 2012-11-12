@@ -2,16 +2,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
+<h1 class="frame-title">
   <%= @inspiration.name %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @inspiration.project_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_inspiration_path(@inspiration) %> |
-<%= link_to 'Back', inspirations_path %>
+</h1>
+<hr/>
+<div style="width:100%;text-align:center;">
+	<%= image_tag @inspiration.image.url, class: "inspiration-image" %>
+</div>

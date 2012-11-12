@@ -1,8 +1,8 @@
-<% provide(:title, 'Edit inspiration') %>
+<% if signed_in? %>
+<% provide(:title, 'Edit Inspiration') %>
 
-<h1>Editing inspiration</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @inspiration %> |
-<%= link_to 'Back', inspirations_path %>
+	<div class="hero-unit">
+	<h1>Edit Inspiration</h1>	
+	<%= render 'form' %>
+	</div>
+<% end %>
