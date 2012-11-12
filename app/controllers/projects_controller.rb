@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    return head :not_found
+    return throw_404
     @projects = Project.all
 
     respond_to do |format|

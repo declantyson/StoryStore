@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    return head :not_found
+    return throw_404
     @characters = Character.all
 
     respond_to do |format|

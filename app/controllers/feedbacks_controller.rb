@@ -2,7 +2,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
   def index
-    return head :not_found
+    return throw_404
     @feedbacks = Feedback.all
 
     respond_to do |format|

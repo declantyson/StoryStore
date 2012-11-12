@@ -2,7 +2,7 @@ class MusicsController < ApplicationController
   # GET /musics
   # GET /musics.json
   def index
-    return head :not_found
+    return throw_404
     @musics = Music.all
 
     respond_to do |format|

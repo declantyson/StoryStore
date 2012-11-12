@@ -2,7 +2,7 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.json
   def index
-    return head :not_found
+    return throw_404
     @scenes = Scene.all
 
     respond_to do |format|

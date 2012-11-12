@@ -27,6 +27,8 @@ GreatBritishDangerzone::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
+  match '*a', :to => 'application#throw_404'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

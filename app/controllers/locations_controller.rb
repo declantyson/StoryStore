@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    return head :not_found
+    return throw_404
     @locations = Location.all
 
     respond_to do |format|

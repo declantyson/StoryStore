@@ -2,7 +2,7 @@ class InspirationsController < ApplicationController
   # GET /inspirations
   # GET /inspirations.json
   def index
-    return head :not_found
+    return throw_404
     @inspirations = Inspiration.all
 
     respond_to do |format|
