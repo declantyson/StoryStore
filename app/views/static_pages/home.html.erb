@@ -44,19 +44,43 @@
     </div>
     <div class="box-group project-boxes">
       <h3>Highest Rated Projects</h3>
-      <% @projects.each do |p| %>
+      <% (0..9).each do |p| %>
+        <% if @projects[p].present? && @projects[p].average_feedback_rating > 0 %>
+          <a href='/projects/<%= @projects[p].id %>'>
+            <div class='box populated-box'>
+              <div class='stars' style='height: 20px;position: absolute;z-index: 90;'>
+                  <% (1..@projects[p].average_feedback_rating).each do |i| %>
+                    <span class="star active"></span>
+                  <% end %>
+                  <% (@projects[p].average_feedback_rating..4).each do |i| %>
+                    <span class="star inactive"></span>
+                  <% end %>
+              </div>
+            <img src='<%= @projects[p].thumbnail.url %>' alt='<%= @projects[p].title %>'/><div class='title'><p><span class="object-title"><%= @projects[p].title %></span></p></div></div></a>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="box-group recent-project-boxes">
+      <h3>Most Recent Projects</h3>
+      <% @recentprojects.each do |p| %>
         <a href='/projects/<%= p.id %>'>
-          <div class='box populated-box'>
-            <div class='stars' style='height: 20px;position: absolute;z-index: 90;'>
-                <% (1..p.average_feedback_rating).each do |i| %>
-                  <span class="star active"></span>
-                <% end %>
-                <% (p.average_feedback_rating..4).each do |i| %>
-                  <span class="star inactive"></span>
-                <% end %>
-            </div>
-          <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><span class="object-title"><%= p.title %></span></p></div></div></a>
-      <% end %> 
+          <div class="box populated-box">
+            <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><span class="object-title"><%= p.title %></span></p></div>
+          </div>
+        </a>
+      <% end %>
+    </div> 
+
+    <div class="box-group inspiration-boxes">
+      <h3>Need some inspiration?</h3>
+      <% @inspiration.each do |p| %>
+        <a href='/projects/<%= p.id %>'>
+          <div class="box populated-box">
+            <img src='<%= p.image.url %>' alt='<%= p.name %>'/><div class='title'><p><span class="object-title"><%= p.name %></span></p></div>
+          </div>
+        </a>
+      <% end %>     
     </div>
 
     <div class="clearfix"></div>
