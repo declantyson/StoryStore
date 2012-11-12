@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     a = []
     self.projects.each_index do |i|
       img = "<img src='#{self.projects[i].thumbnail.url}' alt='#{self.projects[i].title}'/>"
-      a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'>#{img}<div class='title'><p>#{self.projects[i].title}</p></div></div></a>"
+      a << "<a href='/projects/#{self.projects[i].id}'><div class='box populated-box'>#{img}<div class='title'><p><span class='object-title'>#{self.projects[i].title}</span></p></div></div></a>"
     end
     a.join.html_safe
   end

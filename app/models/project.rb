@@ -75,7 +75,7 @@ class Project < ActiveRecord::Base
     a = []
     self.musics.each do |m|
       if !m.spotify_uri.blank?
-        edit = "<span data-frame='/musics/#{m.id}' data-project='?pid=#{self.id}'><a href='#{m.spotify_uri}'><i class='icon-play icon-white' title='Play in spotify'></i></a>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
+        edit = "<a href='#{m.spotify_uri}'><i class='icon-play icon-white' title='Play in spotify'></i></a>&nbsp;<a href='/musics/#{m.id}/edit?pid=#{self.id}'><i class='icon-pencil icon-white edit-object' title='Edit'></i></a><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
         a << "<div class='box populated-box'><a href='#{m.spotify_uri}'><img src='/assets/spotify-play.png' class='spotify-play-button'/></a><div class='title' style='cursor:default'><p><span class='object-title'>#{m.name}</span> #{edit}</p></div><img src='#{m.image.url}' alt='#{m.name}'/></div></span>"
       else
         edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
