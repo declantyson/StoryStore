@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= render 'layouts/fonts' %>
+  <% if params[:lightbox] == "true" %>
+  <link rel="stylesheet" href="/lightbox.css">
+  <% end %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <div class="content">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <div class="center hero-unit">
+    	<h1>404 Not Found</h1>
+    	<div style="width:48%;float:left;"><h2>Sorry about that. Here's a picture of a penguin to make up for it.</h2><p><%= link_to "Return home", "/", :class => 'btn btn-primary' %></p></div>
+    	<div style="width:48%;float:right;">
+    		<img src="/assets/00<%= 1+rand(9) %>.jpg" alt="Penguin!!!"/>
+    	</div>
+    	<div class="clearfix"></div>
+	</div>
+  </div>
+  <%= render 'layouts/footer' %>
+</body>
+</html>

@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :throw_404
 
   def throw_404
-  	return head :not_found
+    render :template => 'error_pages/404', :layout => false, :status => :not_found  
   end
 end
