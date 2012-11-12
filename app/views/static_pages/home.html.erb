@@ -9,6 +9,31 @@
     <%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Register", register_path, class: "btn btn-large btn-secondary" %>
   </div>
+  <div style="max-width:940px;margin:25px auto">
+    <div style="width:48%;float:left;">
+      <h2>All of your inspirations in one place.</h2>
+      <p>StoryStore is a hub for everything related to your project. Document your favourite details about your characters, the locations you're using, listen to influential music and view inspiring images, all hand-picked by you.</p>
+      <img src="assets/ss-1.png" style="max-width:100%"/>
+    </div>
+    <div style="width:48%;float:right;">    
+      <h2>Write beautiful stories in a beautiful editor.</h2>
+      <p>The best ideas come when there is as little distraction as possible, so we've used the simple but powerful RTE Redactor for you to keep your mind clear of everything but your story.</p>
+      <img src="assets/ss-2.png" style="max-width:100%"/>
+    </div>
+    <div class="clearfix"></div>
+    <div style="float:left;width:48%;">
+      <h2>Feed your ideas on-the-go.</h2>
+      <p>StoryStore's fully responsive, lightweight design works on desktops, laptops, smartphones and tablets alike - even Internet Explorer! So no matter where you are or what device you own - you can create.</p>
+    </div>
+    <div style="float:right;width:48%">
+      <h2>Get feedback from like-minded writers.</h2>
+      <p>We're firm believers in always building and improving our ideas, so we ask the community to help us out. Get your project rated and get detailed feedback from your friends, family and peers, or simply other writers who follow your ideas.</p>
+    </div>
+    <div class="clearfix"></div>
+    <center>
+      <%= link_to "Register today!", register_path, class: "btn btn-large btn-primary" %>
+    </center>
+  </div>
   <% else %>
     <div id="project-details">
       <h1>Welcome back, <%= current_user.name %>!</h1>
