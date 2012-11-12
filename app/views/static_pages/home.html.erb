@@ -75,7 +75,7 @@
     <div class="box-group inspiration-boxes">
       <h3>Need some inspiration?</h3>
       <% @inspiration.each do |p| %>
-        <a href='/projects/<%= p.id %>'>
+        <a href='/projects/<%= p.project_id %>'>
           <div class="box populated-box">
             <img src='<%= p.image.url %>' alt='<%= p.name %>'/><div class='title'><p><span class="object-title"><%= p.name %></span></p></div>
           </div>
