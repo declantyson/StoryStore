@@ -31,9 +31,6 @@ class FeedbacksController < ApplicationController
     if signed_in? && @project.user.id == current_user.id
       redirect_to @project, flash: { error: "You can't leave feedback on your own work!" }
       return
-    else
-      redirect_to "/"
-      return
     end
 
     respond_to do |format|
