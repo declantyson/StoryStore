@@ -20,12 +20,11 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    redirect_to '/register', :status => :moved_permanently
   end
 
   # GET /users/1/edit
   def edit
-    if signed_in? && current_user.id == params[:id]
+    if signed_in? && current_user.id == params[:id].to_i
       @user = User.find(params[:id])
     else
       redirect_to "/"

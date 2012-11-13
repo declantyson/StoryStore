@@ -9,7 +9,7 @@ module ApplicationHelper
     genres["drama"] = "Drama/Romance"
     genres["historical"] = "Historical"
     genres["horror"] = "Horror"
-    genres["nf"] = "Non-fiction/Biographical"
+    genres["nf"] = "Non-fiction/ Biographical"
     genres["scifi"] = "Sci Fi/Fantasy"
     genres["thriller"] = "Thriller"
     genres["other"] = "Other"
