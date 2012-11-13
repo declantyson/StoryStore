@@ -65,10 +65,10 @@ class InspirationsController < ApplicationController
   # PUT /inspirations/1.json
   def update
     @inspiration = Inspiration.find(params[:id])
-
+    @project = Project.find(@inspiration.project_id)
     respond_to do |format|
       if @inspiration.update_attributes(params[:inspiration])
-        format.html { redirect_to @inspiration, notice: 'Inspiration was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Inspiration was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
