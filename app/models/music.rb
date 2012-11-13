@@ -15,6 +15,6 @@ class Music < ActiveRecord::Base
   attr_accessible :artist, :project_id, :spotify_uri, :name, :image
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
-
+  validates :spotify_uri, :length => { maximum: 200 }
   validates :name, :presence => true, :length => 3..100
 end

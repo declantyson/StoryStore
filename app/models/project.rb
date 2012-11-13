@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   validates :title, presence: true, length: {minimum: 4, maximum: 255}
   validates :genres, presence: true
   validates :format, presence: true
+  validates :synopsis, length: { maximum: 255 }
   before_save validate :validate_proj_thumbnail
   has_attached_file :thumbnail, styles: { medium: "300x300>", thumb: "100x100>" }
 

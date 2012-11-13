@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022142831) do
+ActiveRecord::Schema.define(:version => 20121113122743) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20121022142831) do
   create_table "scenes", :force => true do |t|
     t.string   "name",               :default => "Please enter scene title..."
     t.integer  "project_id"
-    t.string   "entry"
+    t.text     "entry"
     t.string   "themes"
     t.datetime "created_at",                                                    :null => false
     t.datetime "updated_at",                                                    :null => false
