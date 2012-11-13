@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
      if self.avatar.queued_for_write[:original]
       # self.errors.add(:change_pass)
       dimensions = Paperclip::Geometry.from_file(self.avatar.queued_for_write[:original])
-      self.errors.add(:avatar, "should at least 320px") if dimensions.width < 320
+      self.errors.add(:avatar, "should at least 320px") if dimensions.width > 320
      end
   end
 
