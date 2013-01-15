@@ -2,7 +2,7 @@
 $rubyRed:#9b1031;
 $mainGrey:#f8f9f9;
 $darkerGrey:#e8e9e9;
-$curly: 'Satisfy', sans-serif;
+$curly: 'Fondamento', sans-serif;
 $serif: 'Arbutus Slab', serif;
 $grayMediumLight: #eaeaea;
 
@@ -84,6 +84,7 @@ h2 {
    margin:0;
    color:$rubyRed;
    font-family:$curly;
+   font-size: 20px;
    
    a {
     color:inherit;
