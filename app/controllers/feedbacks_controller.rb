@@ -58,6 +58,7 @@ class FeedbacksController < ApplicationController
     @project = Project.find(@feedback.project_id)
     respond_to do |format|
       if @feedback.save
+        FeedbackNotifier.feedback_email(@project.user).deliver
         format.html { redirect_to @project, notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
