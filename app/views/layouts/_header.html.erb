@@ -1,6 +1,10 @@
   <header class="navbar navbar-fixed-top">
         <%= link_to image_tag("logo.png", alt: "StoryStore"), root_path, id: "logo" %>
-        <h2 class="website-title"><%= link_to "StoryStore", root_path %></h2>
+        <h2 class="website-title">StoryStore
+        	<% if signed_in? %>
+        		<span><%= link_to "Home", root_path %></span><span><%= link_to "Profile", current_user %></span>
+        	<% end %>
+        </h2>
         <h2 class="project-title"><%= yield(:title) %></h2>
         <div class="clearfix"></div>
   </header>
