@@ -2,7 +2,9 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    return throw_404
+    redirect_to "/"
+    return
+
     @projects = Project.all
 
     respond_to do |format|
@@ -15,7 +17,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-
+    @owner = User.find(@project.user_id)
+    if @owner.id != current_user.id && @project.private?
+      throw_403
+      return
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }

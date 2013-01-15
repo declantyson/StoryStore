@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def throw_404
     render :template => 'error_pages/404', :layout => false, :status => :not_found  
   end
+
+  def throw_403
+    render :template => 'error_pages/privacy', :layout => false, :status => :not_found  
+  end
 end

@@ -45,7 +45,7 @@
     <div class="box-group project-boxes">
       <h3>Highest Rated Projects</h3>
       <% (0..9).each do |p| %>
-        <% if @projects[p].present? && @projects[p].average_feedback_rating > 0 %>
+        <% if @projects[p].present? && @projects[p].average_feedback_rating > 0 && !@projects[p].private? %>
           <a href='/projects/<%= @projects[p].id %>'>
             <div class='box populated-box'>
               <div class='stars' style='height: 20px;position: absolute;z-index: 90;'>
@@ -64,22 +64,26 @@
     <div class="box-group recent-project-boxes">
       <h3>Most Recent Projects</h3>
       <% @recentprojects.each do |p| %>
-        <a href='/projects/<%= p.id %>'>
-          <div class="box populated-box">
-            <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><span class="object-title"><%= p.title %></span></p></div>
-          </div>
-        </a>
+        <% if !p.private? || p.user_id == current_user.id  %>
+          <a href='/projects/<%= p.id %>'>
+            <div class="box populated-box">
+              <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><span class="object-title"><%= p.title %></span></p></div>
+            </div>
+          </a>
+        <% end %>
       <% end %>
     </div> 
 
     <div class="box-group inspiration-boxes">
       <h3>Need some inspiration?</h3>
       <% @inspiration.each do |p| %>
+        <% if !p.project.private? || p.project.user_id == current_user.id %>
         <a href='/projects/<%= p.project_id %>'>
           <div class="box populated-box">
             <img src='<%= p.image.url %>' alt='<%= p.name %>'/><div class='title'><p><span class="object-title"><%= p.name %></span></p></div>
           </div>
         </a>
+        <% end %>
       <% end %>     
     </div>
 

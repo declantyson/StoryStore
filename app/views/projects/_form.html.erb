@@ -36,6 +36,10 @@
 		  <%= f.label :format %>
 		  <%= get_format_dropdown() %>
 		</div>
+		<div class="field">
+			<%= f.check_box :privacy, :style => 'width:20px;float:left;' %>
+			<label style="display:inline">Make this project private</label>
+		</div>
 		<div class="actions">
 		  <%= f.submit class: "btn large-btn btn-primary" %>
 		</div>

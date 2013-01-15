@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113122743) do
+ActiveRecord::Schema.define(:version => 20130115160355) do
 
   create_table "characters", :force => true do |t|
     t.string   "name"
@@ -91,12 +91,13 @@ ActiveRecord::Schema.define(:version => 20121113122743) do
     t.string   "synopsis"
     t.string   "genres"
     t.string   "format"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "thumbnail_file_name"
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.boolean  "privacy",                :default => false
   end
 
   create_table "redactor_assets", :force => true do |t|
