@@ -1,10 +1,11 @@
 class FeedbackNotifier < ActionMailer::Base
   default from: "from@example.com"
 
-  def feedback_email(user)
+  def feedback_email(user, feedback, url)
   	@user = user
-  	# @feedback = feedback
-  	mail(:to => user.email, :subject => "test")
+  	@feedback = feedback
+  	@url = url
+  	mail(:to => user.email, :subject => "New feedback on #{@feedback.project.title}!")
   end
 
 end

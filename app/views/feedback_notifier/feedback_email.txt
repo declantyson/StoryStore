@@ -1,1 +1,10 @@
-Hi, <%= @user.name %>
+Dear <%= @user.name %>,
+
+<%= @feedback.user.name %> has left you the following feedback on <%= @feedback.project.title %>:
+
+<%= @feedback.headline %>
+<%= @feedback.rating %>/5
+
+<%= @feedback.comments %>
+
+StoryStore

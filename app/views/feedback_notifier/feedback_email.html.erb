@@ -1,1 +1,53 @@
-<h1>Hi, <%= @user.name %></h1>
+<!doctype html>
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				font-family: sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<table width="720" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr width="100%" style="background-color:#e8e9e9;">
+					<td></td>
+					<td width="180" align="right"><img src="http://<%= @url.gsub("%3A", ":") %>/assets/mail-logo.jpg" alt="StoryStore"/></td>
+				</tr>
+			</tbody>
+		</table>	
+		<table width="720" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr width="100%" style="background-color:#e8e9e9;">
+					<td width="5%"></td>
+					<td width="90%" style="background-color:#fff;">
+						<table width="100%" style="border-top:solid 2px #cccccc;padding:10px;">
+							<tbody>
+								<tr>
+									<td width="50%">
+										<h3>Dear <%= @user.name %>,</h3>
+										<p><%= @feedback.user.name %> has left you the following feedback on <%= @feedback.project.title %>:</p>
+										<p><em><%= @feedback.headline %><br><strong><%= @feedback.rating %>/5</strong></em></p>
+										<p><%= @feedback.comments %></p>
+										<p><strong>StoryStore</strong></p>
+									</td>
+									<td width="50%" align="right">
+										<% if @feedback.project.thumbnail.url == "/thumbnails/original/missing.png" %>
+											<img src="http://<%= @url.gsub("%3A", ":") %><%= @feedback.project.thumbnail.url %>" style="max-width:100%"/>
+										<% else %>
+											<img src="<%= @feedback.project.thumbnail.url %>" style="max-width:100%"/>
+										<% end %>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+					<td width="5%"></td>
+				</tr>
+				<tr height="20px" style="background-color:#e8e9e9;">
+					<td colspan="3"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
