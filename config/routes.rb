@@ -1,4 +1,7 @@
 GreatBritishDangerzone::Application.routes.draw do
+  resources :notifications
+
+
   mount RedactorRails::Engine => '/redactor_rails'
   root to: 'static_pages#home'
 
@@ -23,6 +26,7 @@ GreatBritishDangerzone::Application.routes.draw do
   match '/thumbnails/original/missing.png', to: redirect('/system/projects/thumbnails/original/missing.png')
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/read_notifications', to: 'users#read'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

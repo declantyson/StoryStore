@@ -80,4 +80,12 @@ class UsersController < ApplicationController
 	    format.json { head :no_content }
     end
   end
+
+  def read
+    current_user.notifications.each do |n|
+      n.read = true
+      n.save
+    end
+    render :text => "done"
+  end
 end

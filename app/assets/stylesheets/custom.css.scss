@@ -162,6 +162,41 @@ h3 {
   padding-left:20px;
 }
 
+.website-title .notifications {
+  border-left: solid 1px #cccccc;
+  margin-left: 20px;
+  color: #cccccc;
+  text-shadow: 1px 1px #ffffff;
+  cursor: pointer;
+}
+
+.notifications-box {
+  width: 280px;
+  padding:20px;
+  position:absolute;
+  right: 0px;
+  top: 50px;
+  z-index: 1029;
+  background: #e8e9e9;
+  -moz-box-shadow: 0px 2px 5px #000000;
+  -webkit-box-shadow: 0px 2px 5px #000000;
+  box-shadow: 0px 2px 5px #000000;
+  display:none;
+}
+
+.notifications-box a {
+  color: black;
+  text-decoration: none;
+}
+
+.notifications-box .unread a {
+  font-weight:bold;
+}
+
+.notifications-box small {
+  font-size:0.75em;
+}
+
 footer {
   min-height:100px;
     max-width: 1080px;

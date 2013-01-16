@@ -59,6 +59,12 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       if @feedback.save
         FeedbackNotifier.feedback_email(@project.user, @feedback, request.host_with_port).deliver
+        @notification = Notification.new
+        @notification.title = "#{@feedback.user.name} left feedback on your project #{@project.title}."
+        @notification.user_id = @project.user.id
+        @notification.project_id = @project.id
+        @notification.save
+
         format.html { redirect_to @project, notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else

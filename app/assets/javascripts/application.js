@@ -17,4 +17,18 @@
 
 $(document).ready(function(){
 	setTimeout(function(){ $('.alert').css({ opacity: 0 }); }, 2500);
+	$('.notifications').click(function(){
+		$('.notifications-box').slideToggle(150);
+		if($(this).data('read') != "true") {
+			$.ajax({
+				url: "/read_notifications",
+				type: "get"
+			});
+			setTimeout(function(){
+				$('.notifications').css({ color: "#cccccc" });
+				$('.notifications-box li a').css({ "font-weight" : "normal" })
+			}, 3000);
+			$(this).data("read", "true");
+		}
+	});
 });

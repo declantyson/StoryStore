@@ -2,9 +2,27 @@
         <%= link_to image_tag("logo.png", alt: "StoryStore"), root_path, id: "logo" %>
         <h2 class="website-title">StoryStore
         	<% if signed_in? %>
-        		<span><%= link_to "Home", root_path %></span><span><%= link_to "Profile", current_user %></span>
+        		<span><%= link_to "Home", root_path %></span><span><%= link_to "Profile", current_user %></span><span class="notifications" title="<%= current_user.unread_notifications_count %> new notifications" <% if current_user.unread_notifications_count > 0 %>style="color:red;"<% end %>>!</span>
         	<% end %>
         </h2>
         <h2 class="project-title"><%= yield(:title) %></h2>
         <div class="clearfix"></div>
   </header>
+  <% if signed_in? %>
+  <div class="notifications-box" data-read="false">
+    <h2>Notifications</h2>
+    <% if current_user.notifications.count == 0 %>
+        <p>You have no new notifications.</p>
+    <% else %>
+        <ul>
+            <% count = 0 %>
+            <% current_user.notifications.reverse.each do |n| %>
+                <% count += 1 %>
+                <% if count <= 5 %>
+                    <li<% if !n.read %> class="unread"<% end %>><%= link_to n.title, n.project %> <small><%= time_ago_in_words n.created_at %> ago</small></li>
+                <% end %>
+            <% end %>
+        </ul>
+    <% end %>
+  </div>
+  <% end %>

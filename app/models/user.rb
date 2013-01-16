@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   has_many :projects, :dependent => :destroy
-  has_many :feedbacks
+  has_many :feedbacks, :dependent => :destroy
+  has_many :notifications
 
   #Gets a list of projects by user
   def get_projects()
@@ -68,6 +69,14 @@ class User < ActiveRecord::Base
       dimensions = Paperclip::Geometry.from_file(self.avatar.queued_for_write[:original])
       self.errors.add(:avatar, "should at least 320px") if dimensions.width > 320
      end
+  end
+
+  def unread_notifications_count
+    a = []
+    self.notifications.each do |n|
+      a << n if !n.read
+    end
+    a.count
   end
 
   private
