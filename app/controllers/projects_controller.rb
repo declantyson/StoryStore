@@ -19,14 +19,16 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @owner = User.find(@project.user_id)
 
-    if current_user.nil?
-      current_user = User.new
-      current_user.id = false
-    end 
-
-    if @owner.id != current_user.id && @project.private?
-      throw_403
-      return
+    if signed_in?
+      if @owner.id != current_user.id && @project.private?
+        throw_403
+        return
+      end
+    else
+      if @project.private?
+        throw_403
+        return
+      end
     end
 
     respond_to do |format|
