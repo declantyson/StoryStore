@@ -14,6 +14,7 @@
 #  thumbnail_content_type :string(255)
 #  thumbnail_file_size    :integer
 #  thumbnail_updated_at   :datetime
+#  privacy                :boolean          default(FALSE)
 #
 
 require 'spec_helper'
