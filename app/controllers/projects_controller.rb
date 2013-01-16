@@ -18,10 +18,17 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @owner = User.find(@project.user_id)
+
+    if current_user.nil?
+      current_user = User.new
+      current_user.id = false
+    end 
+
     if @owner.id != current_user.id && @project.private?
       throw_403
       return
     end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
