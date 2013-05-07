@@ -1,4 +1,7 @@
 GreatBritishDangerzone::Application.routes.draw do
+  resources :blogs
+
+
   resources :notifications
 
 
