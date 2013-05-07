@@ -11,15 +11,18 @@
   <div class="details" style="width:242px;margin:0 auto">
       <h2 style="text-align:center">StoryStore Blog</h2>
       <div class="clearfix"></div>
+      <p>The latest StoryStore news, as and when it happens.</p>
       <p><strong>Author</strong></p>
       <p><%= link_to User.find(1).name, User.find(1)  %></p>
   </div>
   <div class="clearfix"></div>
   <% if signed_in? %>
-    <% owner = true %>
-    <center>
-      <%= link_to 'New blog <i class="icon-white icon-align-justify"></i>'.html_safe, new_blog_path, class: "btn btn-large btn-primary" %>
-    </center>
+    <% if current_user.id == 1 %>
+      <% owner = true %>
+      <center>
+        <%= link_to 'New blog <i class="icon-white icon-align-justify"></i>'.html_safe, new_blog_path, class: "btn btn-large btn-primary" %>
+      </center>
+    <% end %>
   <% end %>
 </div>
 

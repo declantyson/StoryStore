@@ -46,6 +46,11 @@ addEmptyBoxes();
 
 $(document).ready(function(){
 	addEmptyBoxes();
+
+	$(window).load(function(){
+		addEmptyBoxes();
+	})
+	
 	$(window).on('resize', function(){
 		addEmptyBoxes();
 	});

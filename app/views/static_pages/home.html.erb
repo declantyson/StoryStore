@@ -38,12 +38,16 @@
     <div id="project-details">
       <h1>Welcome back, <%= current_user.name %>!</h1>
       <h3>Latest News</h3>
-      <h2>Chapter II</h2>
-      <p><em>16.01.13</em></p>
-      <p>"You only fail if you stop writing."<br><strong>Ray Bradbury</strong></p>
-      <hr>
-      <p>Bradbury's quote applies to programming as much as literature; for without love and attention this tool will fail. We listened to your feedback and have bounced back with significant improvements. Gone is the cursive font that many of you despised, and in comes a plethora of features, including a fully functional notification system, e-mails and - perhaps most importantly - the option to write your project in private before you unleash it onto the world.</p>
-      <p>Many thanks to you all for your feedback once again, this is a project that will continue to grow and expand and is entirely focused on the needs of its users. I hope you enjoy the slight upgrade, and continue to provide me with the feedback you so kindly offered.</p>
+      <h2><%= Blog.last.title %></h2>
+      <div style="text-align:center;">
+        <a href="/blogs">
+          <div id="project-image" style="padding: 40px 0;background-color:#f8f9f9;"><img alt="StoryStore" src="/assets/logo.png"></div>
+          <p style="text-align:center;">Check out the StoryStore blog</p>
+        </a>
+        <%= link_to 'Add new project <i class="icon-plus icon-white"></i>'.html_safe, '/projects/new', class: "btn btn-large btn-primary" %>
+        <%= link_to 'Edit account <i class="icon-wrench"></i>'.html_safe, edit_user_path(current_user), class: "btn btn-large btn-secondary" %>
+        <%= link_to 'Sign out <i class="icon-off"></i>'.html_safe, signout_path, method: "delete", class: "btn btn-large btn-secondary" %>
+      </div>
     </div>
     <div class="box-group project-boxes">
       <h3>Highest Rated Projects</h3>
