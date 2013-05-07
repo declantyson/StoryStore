@@ -1,0 +1,9 @@
+<div id="overlay"></div>
+<% if signed_in? %>
+<% provide(:title, 'Edit scene') %>
+
+	<div class="hero-unit">
+	<h1>Edit scene</h1>	
+	<%= render 'form' %>
+	</div>
+<% end %>

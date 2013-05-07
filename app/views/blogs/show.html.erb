@@ -1,0 +1,8 @@
+<% provide(:title, @blog.title) %>
+
+<p id="notice"><%= notice %></p>
+<h1><%= @blog.title %></h1>
+<hr />
+<div id="scene">
+<%= @blog.content.html_safe %>
+</div>
