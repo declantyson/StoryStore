@@ -47,6 +47,8 @@
       <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
       <%= link_to 'Add new music <i class="icon-music"></i><i class="icon-plus"></i>'.html_safe, '/musics/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
       <%= link_to 'Add new inspiration <i class="icon-picture"></i><i class="icon-plus"></i>'.html_safe, '/inspirations/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
+      <%= link_to 'Delete project <i class="icon-white icon-trash"></i>'.html_safe, project_path(@project).to_s, :class => "btn btn-large btn-danger", :confirm => 'Are you sure you want to delete this project?', :method => :delete %>
+
     </center>
    	<% else  %>
   	 	<% if signed_in? %>
