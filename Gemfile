@@ -7,6 +7,10 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'fog'
 
+# Exporter gems
+gem 'prawn'
+gem 'prawnto'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -1,0 +1,21 @@
+<div class="hero-unit">
+	<div class="pro-avatar">
+		<img src='<%= @project.thumbnail.url %>' alt=''/>
+	</div>
+	<form action="/projects/<%= @project.id %>/exported.pdf" method="post" class="form">
+		<h1>Export your project</h1>
+		<hr/>
+		<h2>Export the following:</h2>
+		<input type="checkbox" name="characters"/> Characters<br/>
+		<input type="checkbox" name="scenes"/> Scenes<br/>
+		<input type="checkbox" name="locations"/> Locations<br/>
+		<input type="checkbox" name="music"/> Music<br/>
+		<input type="checkbox" name="inspiration"/> Inspiration<br/>
+		<hr/>
+		<h2>to:</h2>
+		<input type="radio" name="format" checked/> PDF
+	<!--<input type="radio" name="format"/> Other-->
+		<hr/>
+		<input type="submit" class="btn btn-success" value="Export my project"/>
+	</form>
+</div>

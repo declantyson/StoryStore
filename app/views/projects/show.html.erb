@@ -39,6 +39,7 @@
       <% owner = true %>
       <center>
       <%= link_to 'Edit project <i class="icon-white icon-align-justify"></i>'.html_safe, edit_project_path(@project).to_s, class: "btn btn-large btn-primary" %>
+      <%= link_to 'Export project <i class="icon-white icon-book"></i>'.html_safe, "/projects/#{@project.id.to_s}/export", class: "btn btn-large btn-success" %>
       <%= link_to 'Add new character <i class="icon-user"></i><i class="icon-plus"></i>'.html_safe, '/characters/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
       <%= link_to 'Add new scene <i class="icon-film"></i><i class="icon-plus"></i>'.html_safe, '/scenes/new?pid=' + @project.id.to_s, class: "btn btn-large" %>
       <%= link_to 'Add new location <i class="icon-map-marker"></i><i class="icon-plus"></i>'.html_safe, '/locations/new?pid=' + @project.id.to_s, class: "btn btn-large" %>

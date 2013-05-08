@@ -1,3 +1,4 @@
+include ActionView::Helpers::SanitizeHelper
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
@@ -34,6 +35,40 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
+    end
+  end
+
+  # GET /projects/1/export
+  def export
+    @project = Project.find(params[:id])
+    @owner = User.find(@project.user_id)
+
+    if signed_in?
+      if @owner.id != current_user.id
+        throw_403
+        return
+      end
+    end
+
+    respond_to do |format|
+      format.html # export.html.erb
+      format.json { render json: @project }
+    end
+  end
+
+  def exported
+    @project = Project.find(params[:id])
+    @owner = User.find(@project.user_id)
+    @params = params
+
+    respond_to do |format|
+      format.pdf { 
+        if @owner.id != current_user.id
+          redirect_to "/"
+        else
+          render :layout => false 
+        end
+      }
     end
   end
 
