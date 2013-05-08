@@ -145,7 +145,7 @@ class ProjectsController < ApplicationController
   def tags
     field = params[:type]
     @tag = params[:tag].sub("_", " ")
-    @projects = Project.all(:conditions => ["#{field} like ?", "%#{@tag}%".downcase])
+    @projects = Project.all(:conditions => ["lower(#{field}) like ?", "%#{@tag}%".downcase])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
