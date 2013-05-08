@@ -1,0 +1,4 @@
+provider: 'AWS'
+aws_access_key_id: 'AKIAIEYWEE33PLG2TPYA'
+aws_secret_access_key: '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'
+region: 'eu-west-1'
