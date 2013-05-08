@@ -30,11 +30,29 @@
 		</div>
 		<div class="field">
 		  <%= f.label :genres %>
-		  <%= get_genre_dropdown() %>
+		  <span style="font-size:10px;font-style:italic;">Separate genres using commas or slashes.</span><br/>
+		  <div class="suggested">
+		  	<%= suggested_genres() %>
+		  </div>
+		  <div class="tag-input">
+		  	<%= tag_gen(@project.genres, "genres", true, nil) %>
+		  	<input type="text" id="genre-tag"/>
+		  	<div class="clearfix"></div>
+		  	<%= f.hidden_field :genres %>
+		  </div>
 		</div>
 		<div class="field">
 		  <%= f.label :format %>
-		  <%= get_format_dropdown() %>
+		  <span style="font-size:10px;font-style:italic;">Separate formats using commas or slashes.</span><br/>
+		  <div class="suggested">
+		  	<%= suggested_formats() %>
+		  </div>
+		  <div class="tag-input">
+		  	<%= tag_gen(@project.format, "format", true, nil) %>
+		  	<input type="text" id="format-tag"/>
+		  	<div class="clearfix"></div>
+		  	<%= f.hidden_field :format %>
+		  </div>
 		</div>
 		<div class="field">
 			<%= f.check_box :privacy, :style => 'width:20px;float:left;' %>

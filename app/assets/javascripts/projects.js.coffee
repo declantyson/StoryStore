@@ -35,6 +35,45 @@ $ -> $(window).keydown((e) ->
 	closeFrame() if e.keyCode == 27
 )
 
+$ -> $('i.icon-remove').live("click", ( ->
+		$(this).closest('.tag').remove()
+	)
+)
+
+$ -> $('.suggested .tag').click( -> 
+	$this = $(this)
+	$this.parent().siblings('.tag-input').find('input[type=text]').before($this.clone().append('<i class="icon-remove"></i>'))
+)
+
+$ -> $('input#genre-tag, input#format-tag').focus( ->
+	$this = $(this)
+	$this.keydown((e) ->
+		if $this.val() == "" and e.keyCode == 8
+			$this.closest('.tag-input').find('.tag').last().remove();
+		else if e.keyCode == 188 or e.keyCode == 191 or e.keyCode == 13 or e.keyCode == 9
+			e.preventDefault();
+			if $this.val() != ""
+				v = $this.val()
+				$this.before('<span class="tag"><a href="/tag/' + v + '">' + v + '</a><i class="icon-remove"></i></span>').val('')
+	)
+)
+
+$ -> $('form.edit_project, form.new_project').submit((e) ->
+	$('#project_genres, #project_format').val('')
+	$('.tag-input').each( -> 
+		$text = $(this).find('input[type=text]')
+		if $text.val() != ""
+			v = $text.val()
+			$text.before('<span class="tag"><a href="/tag/' + v + '">' + v + '</a><i class="icon-remove"></i></span>').val('')
+	)
+	$('.tag').each( ->
+		$this = $(this)
+		$field = $(this).closest('.tag-input').find('input[type=hidden]')
+		if $this.text() != ""
+			$field.val($field.val() + $this.text() + ",")
+	)
+)
+
 openFrame = (target) ->
 	if window.edit == true
 		window.location.href = target

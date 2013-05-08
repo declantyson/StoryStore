@@ -1,0 +1,29 @@
+ <div id="project-details">
+  <h1>Welcome back, <%= current_user.name %>!</h1>
+  <h3>Latest News</h3>
+  <h2><%= Blog.last.title %></h2>
+  <div style="text-align:center;">
+    <a href="/blogs">
+      <div id="project-image" style="padding: 40px 0;background-color:#f8f9f9;"><img alt="StoryStore" src="/assets/logo.png"></div>
+      <p style="text-align:center;">Check out the StoryStore blog</p>
+    </a>
+    <%= link_to 'Add new project <i class="icon-plus icon-white"></i>'.html_safe, '/projects/new', class: "btn btn-large btn-primary" %>
+    <%= link_to 'Edit account <i class="icon-wrench"></i>'.html_safe, edit_user_path(current_user), class: "btn btn-large btn-secondary" %>
+    <%= link_to 'Sign out <i class="icon-off"></i>'.html_safe, signout_path, method: "delete", class: "btn btn-large btn-secondary" %>
+  </div>
+</div>
+<div class="box-group project-boxes">
+  <h3>Tag search for <%= @tag %></h3>
+  <%  if !@projects.nil? %>
+    <% @projects.each do |p| %>
+      <% if !p.private? || p.user_id == current_user.id  %>
+        <a href='/projects/<%= p.id %>'>
+          <div class="box populated-box">
+            <img src='<%= p.thumbnail.url %>' alt='<%= p.title %>'/><div class='title'><p><span class="object-title"><%= p.title %></span></p></div>
+          </div>
+        </a>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<div class="clearfix"></div>

@@ -26,14 +26,11 @@
       <div class="clearfix"></div>
       <p><strong>Author</strong></p>
       <p><%= link_to User.find(@project.user_id).name, User.find(@project.user_id)  %></p>
-      <div class="left">
-        <p><strong>Genre</strong></p>
-        <p><%= lookup_genre(@project.genres) %></p>
-      </div>
-      <div class="right">
-        <p><strong>Format</strong></p>
-        <p><%= lookup_format(@project.format) %></p>
-      </div>
+      <p><strong>Genre</strong></p>
+      <p><%= tag_gen(@project.genres, "genres") %></p>
+      <div class="clearfix"></div>
+      <p><strong>Format</strong></p>
+      <p><%= tag_gen(@project.format, "format") %></p>
       <div class="clearfix"></div>
       <p><strong>Synopsis</strong><span class="show-synopsis"><img src="/assets/show-more.png"></span></p>
       <p class="synopsis"><%= @project.synopsis %></p>

@@ -106,4 +106,14 @@ class ProjectsController < ApplicationController
 	  	redirect_to "/"
   	end
   end
+
+  def tags
+    field = params[:type]
+    @tag = params[:tag].sub("_", " ")
+    @projects = Project.all(:conditions => ["#{field} like ?", "%#{@tag}%"])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
 end

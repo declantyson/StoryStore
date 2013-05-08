@@ -9,10 +9,9 @@ module ApplicationHelper
     genres["drama"] = "Drama/Romance"
     genres["historical"] = "Historical"
     genres["horror"] = "Horror"
-    genres["nf"] = "Non-fiction/ Biographical"
+    genres["nf"] = "Non-fiction/Biographical"
     genres["scifi"] = "Sci Fi/Fantasy"
     genres["thriller"] = "Thriller"
-    genres["other"] = "Other"
     genres
   end
 
@@ -23,8 +22,9 @@ module ApplicationHelper
     formats["animation"] = "Animation"
     formats["film"] = "Film"
     formats["play"] = "Play"
+    formats["poetry"] = "Poetry"
+    formats["novella"] = "Novella"
     formats["game"] = "Game"
-    formats["other"] = "Other"
     formats
   end
 
@@ -60,4 +60,29 @@ module ApplicationHelper
   	f[s]
   end
 
+  # Convert genres to tags
+  def tag_gen(s, f, d = nil, l = true)
+    return if s.nil?
+    s = s.split(/[,\/]/)
+    tags = []
+    del = "<i class='icon-remove'></i>" if d
+    s.each do |string|
+      if l
+        formatted_string = string.sub(" ", "_").downcase
+        link = "<a href='/tags/#{f}/#{formatted_string}'>#{string}</a>"
+      else
+        link = string
+      end
+      tags << "<span class='tag'>#{link}#{del}</span>"
+    end
+    tags.join.html_safe
+  end
+
+  def suggested_formats(l = nil)
+    tag_gen format_list().map{|k,v| "#{v}"}.join(','), "format", nil, l
+  end  
+
+  def suggested_genres(l = nil)
+    tag_gen genre_list().map{|k,v| "#{v}"}.join(','), "genres", nil, l
+  end
 end

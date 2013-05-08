@@ -480,6 +480,108 @@ iframe html body {
   line-height: normal;
 }
 
+span.tag {
+  display:block;
+  float:left;
+  margin: 0 5px 5px 0;
+  padding: 5px;
+  -moz-box-shadow: 2px 2px 2px #888;
+  -webkit-box-shadow: 2px 2px 2px #888;
+  box-shadow: 2px 2px 2px #888;
+  -moz-transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  border: dashed 1px #cdcdcd;
+  background-color: #ffffff;
+  color: $rubyRed;
+}
+
+span.tag a {
+  text-decoration: none;
+}
+
+span.tag:hover {
+  background-color: #cdcdcd;
+}
+
+.suggested .tag {
+  cursor: pointer;
+}
+
+.tag-input {
+  -webkit-appearance: none;
+  -webkit-border-image: none;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  -webkit-rtl-ordering: logical;
+  -webkit-transition-delay: 0s, 0s;
+  -webkit-transition-duration: 0.2s, 0.2s;
+  -webkit-transition-property: border, box-shadow;
+  -webkit-transition-timing-function: linear, linear;
+  -webkit-user-select: text;
+  -webkit-writing-mode: horizontal-tb;
+  background-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(204, 204, 204);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(204, 204, 204);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(204, 204, 204);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(204, 204, 204);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  color: rgb(85, 85, 85);
+  cursor: auto;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 18px;
+  margin-bottom: 9px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  text-align: start;
+  text-indent: 0px;
+  text-shadow: none;
+  text-transform: none;
+  transition-delay: 0s, 0s;
+  transition-duration: 0.2s, 0.2s;
+  transition-property: border, box-shadow;
+  transition-timing-function: linear, linear;
+  vertical-align: middle;
+  width: 451.1875px;
+  word-spacing: 0px;
+  writing-mode: lr-tb;
+}
+
+input#genre-tag, input#format-tag {
+  width: 200px;
+  background: none;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  padding: 5px;
+}
+
+.tag .icon-remove {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1080px) {
     .form {
         width:37%;

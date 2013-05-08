@@ -30,6 +30,7 @@ GreatBritishDangerzone::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/read_notifications', to: 'users#read'
+  match '/tags/:type/:tag', to: 'projects#tags'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
