@@ -20,7 +20,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :avatar, :change_password
   has_attached_file :avatar, styles: { medium: "320x1000>", thumb: "165x165>" }
-  before_save validate :validate_avatar
+  # before_save validate :validate_avatar
   has_secure_password
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
