@@ -476,6 +476,10 @@ iframe html body {
     text-align:center;
 }
 
+.details h2 {
+  line-height: normal;
+}
+
 @media screen and (max-width: 1080px) {
     .form {
         width:37%;

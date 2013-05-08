@@ -23,7 +23,8 @@
 			<%= f.hidden_field :project_id, value: params[:pid] %>
 		</div>
 		<div class="field">
-		  <%= f.label :spotify_uri %><br />
+		  <label for="music_spotify_uri">Link to music</label>
+		  <span style="font-size:10px;"><i>Can be a valid Spotify URI, YouTube or Soundcloud link (or any other music service you like to use)</i></span><br/>
 		  <%= f.text_field :spotify_uri %>
 		</div>
 		<div class="field">
