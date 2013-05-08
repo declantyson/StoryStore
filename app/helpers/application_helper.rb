@@ -68,7 +68,7 @@ module ApplicationHelper
     del = "<i class='icon-remove'></i>" if d
     s.each do |string|
       if l
-        formatted_string = string.sub(" ", "_")
+        formatted_string = string.sub(" ", "_").downcase
         link = "<a href='/tags/#{f}/#{formatted_string}'>#{string}</a>"
       else
         link = string
