@@ -1,0 +1,4 @@
+provider: 'AWS'
+aws_access_key_id: <%= ENV['AWS_ACC'] %>
+aws_secret_access_key: <%= ENV['AWS_SECRET'] %>
+region: 'eu-west-1'
