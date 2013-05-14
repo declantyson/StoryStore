@@ -16,7 +16,7 @@
 #
 
 class Character < ActiveRecord::Base
-  attr_accessible :image, :name, :personality, :project_id, :quotes, :image
+  attr_accessible :image, :name, :personality, :project_id, :quotes, :image, :weight
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 

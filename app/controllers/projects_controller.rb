@@ -38,6 +38,35 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # POST /projects/1/reorder
+  def reorder
+    @project = Project.find(params[:id])
+    @owner = User.find(@project.user_id)
+    obj = {}
+
+    if signed_in?
+      if @owner.id != current_user.id && @project.private?
+        throw_403
+        return
+      end
+    else
+      if @project.private?
+        throw_403
+        return
+      end
+    end
+
+    params.each do |p|
+      type = p[0].split("_")
+      if ["characters","scenes","locations","musics","inspirations"].include?(type[0])
+          obj = @project.send(type[0].to_sym).find(type[1])
+          obj.update_attributes(:weight => p[1])
+      end
+    end
+
+    redirect_to @project
+  end
+
   # GET /projects/1/export
   def export
     @project = Project.find(params[:id])

@@ -33,6 +33,7 @@ GreatBritishDangerzone::Application.routes.draw do
   match '/tags/:type/:tag', to: 'projects#tags'
   match '/projects/:id/export', to: 'projects#export'
   match '/projects/:id/exported', to: 'projects#exported'
+  match '/projects/:id/reorder', to: 'projects#reorder'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

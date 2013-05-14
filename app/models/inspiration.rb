@@ -14,7 +14,7 @@
 #
 
 class Inspiration < ActiveRecord::Base
-  attr_accessible :image, :project_id, :name, :image
+  attr_accessible :image, :project_id, :name, :image, :weight
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   belongs_to :project
 

@@ -20,11 +20,11 @@
 class Project < ActiveRecord::Base
   attr_accessible :format, :genres, :synopsis, :title, :user_id, :thumbnail, :privacy
   belongs_to :user
-  has_many :characters
-  has_many :scenes
-  has_many :locations
-  has_many :musics
-  has_many :inspirations
+  has_many :characters, :order => "weight ASC"
+  has_many :scenes, :order => "weight ASC"
+  has_many :locations, :order => "weight ASC"
+  has_many :musics, :order => "weight ASC"
+  has_many :inspirations, :order => "weight ASC"
   has_many :feedbacks
 
   validates :title, presence: true, length: {minimum: 4, maximum: 255}
@@ -77,11 +77,11 @@ class Project < ActiveRecord::Base
     a = []
     self.musics.each do |m|
       if !m.spotify_uri.blank?
-        edit = "<a href='#{m.spotify_uri}'><i class='icon-play icon-white' title='Play in spotify'></i></a>&nbsp;<a href='/musics/#{m.id}/edit?pid=#{self.id}'><i class='icon-pencil icon-white edit-object' title='Edit'></i></a><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
-        a << "<span data-frame='/musics/#{m.id}' data-project='?pid=#{self.id}'><div class='box populated-box'><a href='#{m.spotify_uri}'><img src='/assets/spotify-play.png' class='spotify-play-button'/></a><div class='title' style='cursor:default'><p><span class='object-title'>#{m.name}</span> #{edit}</p></div><img src='#{m.image.url}' alt='#{m.name}'/></div></span>"
+        edit = "<a href='#{m.spotify_uri}'><i class='icon-white icon-move move-object' title='Re-order'></i><i class='icon-play icon-white' title='Play in spotify'></i></a>&nbsp;<a href='/musics/#{m.id}/edit?pid=#{self.id}'><i class='icon-pencil icon-white edit-object' title='Edit'></i></a><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
+        a << "<span data-frame='/musics/#{m.id}' data-project='?pid=#{self.id}'><div class='box populated-box' data-id='#{m.id}'><a href='#{m.spotify_uri}'><img src='/assets/spotify-play.png' class='spotify-play-button'/></a><div class='title' style='cursor:default'><p><span class='object-title'>#{m.name}</span> #{edit}</p></div><img src='#{m.image.url}' alt='#{m.name}'/></div></span>"
       else
-        edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
-        a << "<span data-frame='/musics/#{m.id}' data-project='?pid=#{self.id}'><div class='box populated-box'><div class='title'><p><span class='object-title'>#{m.name}</span> #{edit}</p></div><img src='#{m.image.url}' alt='#{m.name}'/></div></span>"
+        edit = "<i class='icon-white icon-move move-object' title='Re-order'></i><i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/'#{m.id}' data-confirm='Are you sure you want to delete #{m.name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>" if signed_in
+        a << "<span data-frame='/musics/#{m.id}' data-project='?pid=#{self.id}'><div class='box populated-box' data-id='#{m.id}'><div class='title'><p><span class='object-title'>#{m.name}</span> #{edit}</p></div><img src='#{m.image.url}' alt='#{m.name}'/></div></span>"
       end  
     end
     a.join.html_safe
@@ -91,10 +91,10 @@ class Project < ActiveRecord::Base
     a = []
     self.send(thing.to_sym).each_index do |i|
       if signed_in
-  	  	edit = "<i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/#{thing}/#{self.send(thing.to_sym)[i].id}' data-confirm='Are you sure you want to delete #{self.send(thing.to_sym)[i].name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>"
+  	  	edit = "<i class='icon-white icon-move move-object' title='Re-order'></i><i class='icon-search icon-white view-object' title='View'></i>&nbsp;<i class='icon-pencil icon-white edit-object' title='Edit'></i><a href='/#{thing}/#{self.send(thing.to_sym)[i].id}' data-confirm='Are you sure you want to delete #{self.send(thing.to_sym)[i].name}?' data-method='delete' rel='nofollow'><i class='icon-trash icon-white delete-object' title='Delete'></i></a>"
 	    end
 		  img = "<img src='#{self.send(thing.to_sym)[i].image.url}' alt='#{self.send(thing.to_sym)[i].name}'/>"
-      a << "<span data-frame='/#{thing}/#{self.send(thing.to_sym)[i].id}' data-project='?pid=#{self.id}'><div class='box populated-box'>#{img}<div class='title'><p><span class='object-title'>#{self.send(thing.to_sym)[i].name}</span> #{edit}</p></div></div></span>"
+      a << "<span data-frame='/#{thing}/#{self.send(thing.to_sym)[i].id}' data-project='?pid=#{self.id}'><div class='box populated-box' data-id='#{self.send(thing.to_sym)[i].id}'>#{img}<div class='title'><p><span class='object-title'>#{self.send(thing.to_sym)[i].name}</span> #{edit}</p></div></div></span>"
     end
     a.join.html_safe
   end

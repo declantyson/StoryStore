@@ -60,27 +60,33 @@
 
 <p id="notice"><%= notice %></p>
 
-<div class="box-group character-boxes">
+<% if signed_in? && current_user.id == @owner.id %>
+  <form id="reorder_project" action="/projects/<%= @project.id %>/reorder" method="post">
+    <input type="submit" value='Save order' class="btn btn-large btn-success reorder-button" />
+  </form>
+<% end %>
+
+<div id="characters" class="box-group character-boxes">
   <h3>Characters</h3>
   <%= @project.get_thing("characters", owner) %>
 </div>
 
-<div class="box-group scene-boxes">
+<div id="scenes" class="box-group scene-boxes">
   <h3>Scenes/Chapters</h3>
   <%= @project.get_thing("scenes", owner) %>
 </div>
 
-<div class="box-group location-boxes">
+<div id="locations" class="box-group location-boxes">
   <h3>Locations</h3>
   <%= @project.get_thing("locations", owner) %>
 </div>
 
-<div class="box-group music-boxes">
+<div id="musics" class="box-group music-boxes">
   <h3>Music</h3>
   <%= @project.get_music(owner) %>
 </div>
 
-<div class="box-group inspiration-boxes">
+<div id="inspirations" class="box-group inspiration-boxes">
   <h3>Inspiration</h3>
   <%= @project.get_thing("inspirations", owner) %>
 </div>

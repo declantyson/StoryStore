@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507113842) do
+ActiveRecord::Schema.define(:version => 20130513163949) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130507113842) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "weight"
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130507113842) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "weight"
   end
 
   create_table "locations", :force => true do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130507113842) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "weight"
   end
 
   create_table "microposts", :force => true do |t|
@@ -90,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20130507113842) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "weight"
   end
 
   create_table "notifications", :force => true do |t|
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20130507113842) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "weight"
   end
 
   create_table "users", :force => true do |t|

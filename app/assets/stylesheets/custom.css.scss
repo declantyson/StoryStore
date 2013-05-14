@@ -428,7 +428,7 @@ height:80%;width:50%;position:fixed;-moz-box-shadow: -4px 7px 34px #000000;-webk
     white-space: nowrap;
     overflow: hidden;
     text-overflow:ellipsis;
-    width: 99px;
+    width: 85px;
     display: block;
     float: left;
     position: relative;
@@ -580,6 +580,11 @@ input#genre-tag, input#format-tag {
 
 .tag .icon-remove {
   cursor: pointer;
+}
+
+.reorder-button {
+  margin-top: 20px;
+  display: none;
 }
 
 @media screen and (max-width: 1080px) {

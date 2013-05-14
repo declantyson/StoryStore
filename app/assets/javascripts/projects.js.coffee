@@ -6,13 +6,16 @@ window.edit = false
 window.scene = false
 window.delete = false
 
-$ -> $('.edit-object, .delete-object, .box-group span').click( ->
+$ -> $('.edit-object, .delete-object, .box-group span, .move-object').click( ->
 	$group = $(this).closest('.box-group')
 	window.scene = true if $group.hasClass('scene-boxes')
 	window.edit = true if $(this).hasClass("edit-object")
 	window.delete = true if $(this).hasClass("delete-object")
 	
 	if window.edit == true and !$(this).hasClass("edit-object")
+		return false	
+
+	if $(this).hasClass("move-object")
 		return false
 		
 	if window.delete == true and !$(this).hasClass("delete-object")
@@ -26,6 +29,16 @@ $ -> $('.edit-object, .delete-object, .box-group span').click( ->
 		target += "&lightbox=true"
 	openFrame(target)
 )
+
+$ -> $('.box-group').sortable({	revert: true, handle : ".move-object", items: ".populated-box", stop: () ->
+	$('.reorder-button').fadeIn('slow');
+	count = 0
+	$(this).find('.populated-box').each(->
+		$(this).data('order', count)
+		count++
+		$('#reorder_project').append("<input type='hidden' name='" + $(this).closest('.box-group').attr('id') + "_" + $(this).data('id') + "' value='" + $(this).data('order') + "'/>")
+	)
+})
 
 $ -> $('#overlay, .close-frame').click( ->
 	closeFrame()
