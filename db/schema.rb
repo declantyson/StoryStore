@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513163949) do
+ActiveRecord::Schema.define(:version => 20130514100925) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130513163949) do
   create_table "characters", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
-    t.string   "personality"
-    t.string   "quotes"
+    t.text     "personality"
+    t.text     "quotes"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130513163949) do
     t.string   "name"
     t.integer  "project_id"
     t.string   "image"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
