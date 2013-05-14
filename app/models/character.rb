@@ -21,6 +21,4 @@ class Character < ActiveRecord::Base
   belongs_to :project
 
   validates :name, :presence => true, :length => 3..100
-  validates :personality, :length => { :maximum => 200 }
-  validates :quotes, :length => { :maximum => 200 }
 end

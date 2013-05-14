@@ -21,5 +21,4 @@ class Location < ActiveRecord::Base
   belongs_to :project
 
   validates :name, :presence => true, :length => 3..100
-  validates :description, :length => { :maximum => 200 }
 end
