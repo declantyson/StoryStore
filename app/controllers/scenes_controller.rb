@@ -2,12 +2,21 @@ class ScenesController < ApplicationController
   # GET /scenes
   # GET /scenes.json
   def index
-    return throw_404
-    @scenes = Scene.all
+    token = cookies[:remember_token]
+    if token.blank?
+      token = params[:token]
+    end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @scenes }
+    if Project.find(params[:pid]).user_id == User.find_by_remember_token(token).id
+      @scenes = Scene.joins(:project).where("projects.id" => params[:pid])
+      # @scenes = Scene.joins(:project).where("projects.user_id" => User.find_by_remember_token(token).id)
+
+      respond_to do |format|
+        format.html { throw_404 }
+        format.json { render json: @scenes }
+      end
+    else 
+      throw_403
     end
   end
 
