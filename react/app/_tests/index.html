@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" type="text/css" href="/_lib/qunit.css"/>
+</head>
+<body>
+	<div id="qunit"></div>
+    <div id='qunit-fixture'></div>
+    <div id="sidebar"></div>
+    <div id="content"></div>
+
+    <script type="text/javascript" src="/_lib/qunit.js"></script>
+    <script type="text/javascript">
+		QUnit.config.autostart = false;
+	</script>	
+    <script type="text/javascript" src="/_lib/react.js"></script>
+	<script type="text/javascript" src="/_lib/react-dom.js"></script>
+	<script type="text/javascript" src="/_lib/browser.js"></script>
+	<script type="text/javascript" src="/_lib/jquery.min.js"></script>
+	<script type="text/babel" src="/_scripts/script.js"></script>
+	
+	<script type="text/javascript">
+		QUnit.start();
+		module("Basic Tests");
+
+		test("truthy", function() {
+			ok(true, "true is truthy");
+		});
+	</script>
+</body>
+</html>

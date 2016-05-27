@@ -16,3 +16,17 @@
 
 # ignore s3 config
 /config/s3.yml
+
+# ignore npm stuff
+node_modules/
+react/node_modules/.bin/*
+react/node_modules/connect/*
+react/node_modules/grunt-contrib-connect/*
+react/node_modules/grunt-contrib-cssmin/*
+react/node_modules/grunt-contrib-less/*
+react/node_modules/grunt-contrib-qunit/*
+react/node_modules/grunt-contrib-uglify/*
+react/node_modules/grunt-contrib-watch/*
+react/node_modules/grunt-notify/*
+react/node_modules/phantomjs/*
+react/node_modules/serve-static/*
