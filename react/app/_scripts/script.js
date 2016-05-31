@@ -1,4 +1,4 @@
-var scenesApi = "http://localhost:3000/scenes.json?token=" + getCookie("remember_token");
+var scenesApi = "http://localhost:3000/scenes.json?pid=1&token=" + getCookie("remember_token");
 
 var SceneSwitcher = React.createClass({
 	getInitialState: function(){
@@ -56,7 +56,6 @@ var SceneSwitcher = React.createClass({
 
 var SceneSwitch = React.createClass({
 	render: function(){ 
-		console.log(this.props.data);
 		return (
 			<div className="sceneSwitch" onClick={() => this.props.onclick(this.props.sceneId)}>
 				{this.props.data.name}
@@ -120,12 +119,41 @@ var Character = React.createClass({
 	}
 });
 
-ReactDOM.render(	
-	<CharacterRelationshipDiagram url="/_data/characters.json" pollInterval="5000"/>,
-	document.getElementById('sidebar')
-);
+pjaxit.dynamicElementId = "pjaxitContent";
+document.addEventListener("click", function(e){
+	if(e.target.nodeName === "A") {
+		e.preventDefault();
+		pjaxit.changePage(e.target.attributes["href"].value);
+	}
+});
 
-ReactDOM.render(
-	<SceneSwitcher url={scenesApi} selectedId="1" />,
-	document.getElementById('content')
-)
+pjaxit.pageChangeEvent["/index.html"] = function(){
+	ReactDOM.render(
+		<h1>Helloworld</h1>,
+		document.getElementById('sidebar')
+	);
+
+	ReactDOM.render(
+		<div/>,
+		document.getElementById('content')
+	);
+}
+
+pjaxit.pageChangeEvent["/editor.html"] = function(){
+	ReactDOM.render(	
+		<CharacterRelationshipDiagram url="/_data/characters.json" pollInterval="5000"/>,
+		document.getElementById('sidebar')
+	);
+
+	ReactDOM.render(
+		<SceneSwitcher url={scenesApi} selectedId="1" />,
+		document.getElementById('content')
+	);
+};
+
+
+// initial load
+var page = window.location.pathname.split("/")[1];
+if(page == "") page = "index.html";
+page = "/" + page;
+pjaxit.pageChangeEvent[page]();
