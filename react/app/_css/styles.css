@@ -1,4 +1,62 @@
-#sidebar {
-  width: 200px;
-  float: right;
+/*
+*	StoryStore
+*	Declan Tyson, declantyson.net
+*	v2.0.1
+*/
+/* Fonts */
+@font-face {
+  font-family: 'Avenir';
+  src: url('../_fonts/AvenirLTStd-Light.eot');
+  src: url('../_fonts/AvenirLTStd-Light.eot?#iefix') format('embedded-opentype'), url('../_fonts/AvenirLTStd-Light.woff') format('woff'), url('../_fonts/AvenirLTStd-Light.ttf') format('truetype'), url('../_fonts/AvenirLTStd-Light.svg#new_Avenirregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir Bold';
+  src: url('../_fonts/AvenirLTStd-Black.eot');
+  src: url('../_fonts/AvenirLTStd-Black.eot?#iefix') format('embedded-opentype'), url('../_fonts/AvenirLTStd-Black.woff') format('woff'), url('../_fonts/AvenirLTStd-Black.ttf') format('truetype'), url('../_fonts/AvenirLTStd-Black.svg#new_Avenirregular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+/* Utilities */
+/* main layout */
+html,
+body {
+  margin: 0;
+  font-family: 'Avenir';
+  height: 100%;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Avenir Bold';
+  font-weight: normal;
+}
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+#pjaxitContent {
+  min-height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../_images/splash.jpg);
+  transition: background-image 0.4s ease-out;
+  -webkit-transition: background-image 0.4s ease-out;
+  -moz-transition: background-image 0.4s ease-out;
+  -ms-transition: background-image 0.4s ease-out;
+  -o-transition: background-image 0.4s ease-out;
+}
+#pjaxitContent #sidebar {
+  width: 40%;
+  float: left;
+}
+#pjaxitContent.login {
+  background-image: url(../_images/login.jpg);
+}
+#pjaxitContent.login #sidebar {
+  color: #fff;
 }

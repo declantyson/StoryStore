@@ -1,4 +1,136 @@
-#sidebar {
-	width: 200px;
-	float: right;
+/*
+*	StoryStore
+*	Declan Tyson, declantyson.net
+*	v2.0.1
+*/
+
+/* Fonts */
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../_fonts/AvenirLTStd-Light.eot');
+  src: url('../_fonts/AvenirLTStd-Light.eot?#iefix') format('embedded-opentype'), url('../_fonts/AvenirLTStd-Light.woff') format('woff'), url('../_fonts/AvenirLTStd-Light.ttf') format('truetype'), url('../_fonts/AvenirLTStd-Light.svg#new_Avenirregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Avenir Bold';
+  src: url('../_fonts/AvenirLTStd-Black.eot');
+  src: url('../_fonts/AvenirLTStd-Black.eot?#iefix') format('embedded-opentype'), url('../_fonts/AvenirLTStd-Black.woff') format('woff'), url('../_fonts/AvenirLTStd-Black.ttf') format('truetype'), url('../_fonts/AvenirLTStd-Black.svg#new_Avenirregular') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Utilities */
+
+@ssRed: #EB2227;
+
+._clear() { 
+	clear: both; 
+}
+
+._roundedborder(@size) {
+	border-radius: @size;
+	-webkit-border-radius: @size;
+	-moz-border-radius: @size;
+	-ms-border-radius: @size;
+	-o-border-radius: @size;
+}
+
+._transition(@transition) {
+	transition: @transition;
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+}
+
+._transform(@transform) {
+	transform: @transform;
+	-webkit-transform: @transform;
+	-moz-transform: @transform;
+	-ms-transform: @transform;
+	-o-transform: @transform;
+}
+
+._boxshadow(@components) {
+	box-shadow: @components;
+	-webkit-box-shadow: @components;
+	-moz-box-shadow: @components;
+	-ms-box-shadow: @components;
+	-o-box-shadow: @components;
+}
+
+._triangle(@color, @side, @width) {
+	content: ' ';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: @width;
+	border-@{side}-width: 0;
+	border-color: transparent;
+	& when (@side = left) { border-right-color: @color;	}
+	& when (@side = right) { border-left-color: @color;	}
+	& when (@side = top) { border-bottom-color: @color;	}
+	& when (@side = bottom) { border-top-color: @color;	}
+	& when (@side = topleft) { 
+		border-bottom-width: 0;
+		border-left-width: 0; 
+		border-top-color: @color; 
+	}
+	& when (@side = topright) { 
+		border-top-width: 0; 
+		border-left-width: 0; 
+		border-right-color: @color; 
+	}
+	& when (@side = bottomleft) { 
+		border-bottom-width: 0;
+		border-right-width: 0; 
+		border-left-color: @color; 
+	}
+	& when (@side = bottomright) { 
+		border-top-width: 0; 
+		border-right-width: 0; 
+		border-bottom-color: @color; 
+	}
+}
+
+/* main layout */
+
+html, body {
+	margin: 0;
+	font-family: 'Avenir';
+	height: 100%;
+}
+
+h1, h2, h3 {
+	font-family: 'Avenir Bold';
+	font-weight: normal;
+}
+
+h4, h5, h6 {
+	font-weight: normal;
+}
+
+
+#pjaxitContent {
+	min-height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(../_images/splash.jpg);
+	._transition(background-image 0.4s ease-out);
+	#sidebar {
+		width: 40%;
+		float: left;
+	}
+
+	&.login {
+		background-image: url(../_images/login.jpg);
+
+		#sidebar {
+			color: #fff;
+		}
+	}
 }

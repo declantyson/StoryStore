@@ -119,6 +119,16 @@ var Character = React.createClass({
 	}
 });
 
+var LoginForm = React.createClass({
+	render: function() {
+		return	(
+			<div class="login">
+
+			</div>
+		)
+	}
+})
+
 pjaxit.dynamicElementId = "pjaxitContent";
 document.addEventListener("click", function(e){
 	if(e.target.nodeName === "A") {
@@ -128,6 +138,8 @@ document.addEventListener("click", function(e){
 });
 
 pjaxit.pageChangeEvent["/index.html"] = function(){
+	document.getElementById(pjaxit.dynamicElementId).className = "login";
+
 	ReactDOM.render(
 		<h1>Helloworld</h1>,
 		document.getElementById('sidebar')
@@ -140,6 +152,8 @@ pjaxit.pageChangeEvent["/index.html"] = function(){
 }
 
 pjaxit.pageChangeEvent["/editor.html"] = function(){
+	document.getElementById(pjaxit.dynamicElementId).className = "editor";
+
 	ReactDOM.render(	
 		<CharacterRelationshipDiagram url="/_data/characters.json" pollInterval="5000"/>,
 		document.getElementById('sidebar')
