@@ -1,19 +1,20 @@
-var scenesApi = "http://localhost:3000/scenes.json?pid=1&token=" + getCookie("remember_token");
+var apiPrefix = "http://localhost:3000";
 
 var SceneSwitcher = React.createClass({
+	scenesApi: apiPrefix + "/scenes.json?pid=1&token=" + getCookie("remember_token"),
 	getInitialState: function(){
 		return {data: []};
 	},
 	getScenes: function(){
 		$.ajax({
-			url: this.props.url,
+			url: this.scenesApi,
 			dataType: 'json',
 			cache: false,
 			success: function(data) {
 				this.setState({data: data});
 			}.bind(this),
 			error: function(xhr, status, err) {
-				console.error(this.props.url, status, err.toString());
+				console.error(this.scenesApi, status, err.toString());
 			}.bind(this)
 		}); 
 	},
@@ -23,7 +24,7 @@ var SceneSwitcher = React.createClass({
 	render: function() {
 		this.state.fnClick = function(k) {
 			ReactDOM.render(
-				<SceneSwitcher url={scenesApi} selectedId={k} />,
+				<SceneSwitcher selectedId={k} />,
 				document.getElementById('content')
 			);
 		};
@@ -120,14 +121,51 @@ var Character = React.createClass({
 });
 
 var LoginForm = React.createClass({
+	loginEndpoint: apiPrefix + "/sessions",
+	attemptLogin: function(e){
+		e.preventDefault();
+		var obj = {};
+		obj["session[email]"] = $('input[name=email]').val();
+		obj["session[password]"] = $('input[name=password]').val();
+
+		$.ajax({
+			url: this.loginEndpoint,
+			type: 'POST',
+			data: obj,
+			cache: false,
+			success: function(data) {
+				if(data == "Success" && getCookie("remember_token") != "") {
+					pjaxit.changePage('editor.html');
+				}
+				//this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
+		}); 
+	},
 	render: function() {
 		return	(
-			<div class="login">
+			<form className="login-form" onSubmit={this.attemptLogin}>
+				<input type="text" placeholder="Email address" name="email"/>
+				<input type="password" placeholder="Password" name="password"/>
+				<input type="button" value="Register" disabled/>
+				<input type="submit" value="Login"/>
+			</form>
+		)
+	}
+});
 
+var Logo = React.createClass({
+	render: function() {
+		return	(
+			<div className="logo">
+				<img src="_images/logo.png"/>
+				<h1>StoryStore</h1>
 			</div>
 		)
 	}
-})
+});
 
 pjaxit.dynamicElementId = "pjaxitContent";
 document.addEventListener("click", function(e){
@@ -137,11 +175,14 @@ document.addEventListener("click", function(e){
 	}
 });
 
-pjaxit.pageChangeEvent["/index.html"] = function(){
+pjaxit.pageChangeEvent["/react/app/index.html"] = function(){
 	document.getElementById(pjaxit.dynamicElementId).className = "login";
 
 	ReactDOM.render(
-		<h1>Helloworld</h1>,
+		<div>
+			<Logo />
+			<LoginForm/>
+		</div>,
 		document.getElementById('sidebar')
 	);
 
@@ -151,7 +192,7 @@ pjaxit.pageChangeEvent["/index.html"] = function(){
 	);
 }
 
-pjaxit.pageChangeEvent["/editor.html"] = function(){
+pjaxit.pageChangeEvent["/react/app/editor.html"] = function(){
 	document.getElementById(pjaxit.dynamicElementId).className = "editor";
 
 	ReactDOM.render(	
@@ -160,14 +201,15 @@ pjaxit.pageChangeEvent["/editor.html"] = function(){
 	);
 
 	ReactDOM.render(
-		<SceneSwitcher url={scenesApi} selectedId="1" />,
+		<SceneSwitcher selectedId="1" />,
 		document.getElementById('content')
 	);
 };
 
 
 // initial load
-var page = window.location.pathname.split("/")[1];
+var loc = window.location.pathname.split("/");
+var page = loc[loc.length - 1];
 if(page == "") page = "index.html";
-page = "/" + page;
+page = "/react/app/" + page;
 pjaxit.pageChangeEvent[page]();

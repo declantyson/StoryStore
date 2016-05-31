@@ -51,12 +51,51 @@ h6 {
   -o-transition: background-image 0.4s ease-out;
 }
 #pjaxitContent #sidebar {
-  width: 40%;
+  width: 30%;
+  padding: 20px 5%;
   float: left;
+}
+#pjaxitContent #sidebar .logo {
+  width: 340px;
+}
+#pjaxitContent #sidebar .logo img {
+  float: left;
+  height: 100px;
+  margin-right: 20px;
+}
+#pjaxitContent #sidebar .logo h1 {
+  font-size: 42px;
+  line-height: 100px;
 }
 #pjaxitContent.login {
   background-image: url(../_images/login.jpg);
 }
 #pjaxitContent.login #sidebar {
   color: #fff;
+  padding: 5%;
+}
+#pjaxitContent.login #sidebar .login-form {
+  width: 340px;
+}
+#pjaxitContent.login #sidebar .login-form input[type=text],
+#pjaxitContent.login #sidebar .login-form input[type=password],
+#pjaxitContent.login #sidebar .login-form input[type=button],
+#pjaxitContent.login #sidebar .login-form input[type=submit] {
+  width: 310px;
+  padding: 15px;
+  font-family: 'Avenir';
+  font-size: 22px;
+  border: none;
+  margin: 5px 0;
+}
+#pjaxitContent.login #sidebar .login-form input[type=button],
+#pjaxitContent.login #sidebar .login-form input[type=submit] {
+  width: 165px;
+  margin: 5px 10px 0 0;
+  background-color: #cdcdcd;
+  color: #fff;
+}
+#pjaxitContent.login #sidebar .login-form input[type=submit] {
+  margin-right: 0;
+  background-color: #EB2227;
 }

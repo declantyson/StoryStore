@@ -31,3 +31,4 @@ react/node_modules/grunt-notify/*
 react/node_modules/phantomjs/*
 react/node_modules/serve-static/*
 config/database.yml
+config/database.yml

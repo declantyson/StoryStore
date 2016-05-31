@@ -24,6 +24,7 @@
 /* Utilities */
 
 @ssRed: #EB2227;
+@ssDeepRed: #9f0b14;
 
 ._clear() { 
 	clear: both; 
@@ -111,7 +112,7 @@ h1, h2, h3 {
 h4, h5, h6 {
 	font-weight: normal;
 }
-
+ 
 
 #pjaxitContent {
 	min-height: 100%;
@@ -122,15 +123,51 @@ h4, h5, h6 {
 	background-image: url(../_images/splash.jpg);
 	._transition(background-image 0.4s ease-out);
 	#sidebar {
-		width: 40%;
+		width: 30%;
+		padding:  20px 5%;
 		float: left;
+		.logo {
+			width: 340px;
+			img {
+				float: left;
+				height: 100px;
+				margin-right: 20px;
+			}
+			h1 {
+				font-size: 42px;
+				line-height: 100px
+			}
+		}
 	}
-
 	&.login {
 		background-image: url(../_images/login.jpg);
-
 		#sidebar {
 			color: #fff;
+			padding: 5%;
+			.login-form {
+				width: 340px;
+				input[type=text],
+				input[type=password] {
+					width: 310px;
+					padding: 15px;
+					font-family: 'Avenir';
+					font-size: 22px;
+					border: none;
+					margin: 5px 0;
+				}
+				input[type=button] {
+					&:extend(#pjaxitContent.login #sidebar .login-form input[type=text]);
+					width: 165px;
+					margin: 5px 10px 0 0;
+					background-color: #cdcdcd;
+					color: #fff;
+				}
+				input[type=submit] {
+					&:extend(#pjaxitContent.login #sidebar .login-form input[type=button]);
+					margin-right: 0;
+					background-color: @ssRed;
+				}
+			}
 		}
 	}
 }
