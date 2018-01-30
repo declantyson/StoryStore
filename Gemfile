@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '3.2.22.2'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'paperclip', '~> 4.2.2'
 gem 'aws-sdk'
 gem 'fog'
+gem 'rack'
+gem 'rack-ssl'
 
 # Exporter gems
 gem 'prawn'
