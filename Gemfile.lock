@@ -785,7 +785,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
     pdf-core (0.7.0)
-    pg (0.12.2)
+    pg (0.15.0)
     polyglot (0.3.5)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
@@ -899,7 +899,7 @@ DEPENDENCIES
   jquery-rails (~> 3.1.3)
   mini_magick
   paperclip (~> 4.2.2)
-  pg (= 0.12.2)
+  pg (= 0.15)
   prawn
   prawnto
   rails (= 3.2.15)
