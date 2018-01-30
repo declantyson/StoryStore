@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.15'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 4.2.2'
 gem 'aws-sdk'
 gem 'fog'
 
@@ -15,7 +15,7 @@ gem 'prawnto'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.5'
+  gem 'sqlite3', '1.3.13'
   gem 'rspec-rails', '2.11.0'
 end
 
@@ -33,7 +33,7 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '~> 3.1.3'
 gem 'redactor-rails'
 gem 'carrierwave'
 gem 'mini_magick'
